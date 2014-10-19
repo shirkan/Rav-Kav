@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="com.google.admobsdk-ios"
+	version="6.12.0">
+      
+  	<engines>
+    	<engine name="cordova" version=">=3.0.0" />
+    </engines>
+        
+    <name>AdMob SDK for iOS</name>
+	<description>Not a plugin for javascript to call, it just add AdMob SDK to project, as dependency of some plugins. For AdMob plugin, use: com.google.cordova.admob</description>
+	<keywords>admobsdk,sdk</keywords>
+
+     <!-- ios -->
+     <platform name="ios">    
+         <header-file src="src/ios/GADAdMobExtras.h" />
+         <header-file src="src/ios/GADAdNetworkExtras.h" />
+         <header-file src="src/ios/GADAdSize.h" />
+         <header-file src="src/ios/GADBannerView.h" />
+         <header-file src="src/ios/GADBannerViewDelegate.h" />
+         <header-file src="src/ios/GADInAppPurchase.h" />
+         <header-file src="src/ios/GADInAppPurchaseDelegate.h" />
+         <header-file src="src/ios/GADInterstitial.h" />
+         <header-file src="src/ios/GADInterstitialDelegate.h" />
+         <header-file src="src/ios/GADModules.h" />
+         <header-file src="src/ios/GADRequest.h" />
+         <header-file src="src/ios/GADRequestError.h" />
+         <source-file src="src/ios/libGoogleAdMobAds.a" framework="true" />
+         
+         <framework src="AdSupport.framework" />
+         <framework src="AudioToolbox.framework" />
+         <framework src="AVFoundation.framework" />
+         <framework src="CoreGraphics.framework" />
+         <framework src="CoreTelephony.framework" />
+	 <framework src="EventKit.framework" />
+	 <framework src="EventKitUI.framework" />
+         <framework src="Foundation.framework" />
+         <framework src="MessageUI.framework" />
+         <framework src="StoreKit.framework" />
+         <framework src="SystemConfiguration.framework" />
+         <framework src="UIKit.framework" />
+	</platform>
+
+</plugin>

@@ -1,0 +1,211 @@
+body {
+	background-color: black;
+	font-family: Arial;
+}
+
+#outer_div {
+	height: 100% !important;
+}
+
+h3 {
+	color: white;
+}
+
+h4 {
+	color: white;
+}
+
+div {
+	color: white;
+	background-color: black;
+}
+
+#body_div {
+	text-align: center;
+	height: 90% !important;
+	width: auto;
+	border-radius: 6px;
+	border-color: white;
+	border-width: 2px;
+	border-style: solid;
+	margin: 3px 3px 3px 3px;
+	position: relative;
+}
+
+#button_back {
+	background-color: white;
+	border-radius: 6px;
+	display: inline-block;
+/*	position: absolute;*/
+}
+
+#addContract {
+	background-color: white;
+	color: black;
+	font-style: bold;
+	font-size: medium;
+	font-family: Arial;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 6px;
+	margin: 3px 3px 3px 3px;
+}
+
+#contracts {
+	overflow: auto;
+	display: block;
+}
+
+#contracts div {
+	padding: 0 4px;
+	display: block;
+}
+
+#contracts button {
+	width: auto;
+	height: auto;
+	color: white;
+	background-color: black;
+	border: white solid 2px;
+	border-radius: 6px;
+	font-size: medium;
+	font-family: Arial;
+}
+
+#edit_div button {
+	color: white;
+	background-color: black;
+	border:	solid 2px white;
+	border-radius: 6px;
+}
+
+#edit_div input {
+	font-size: small;
+}
+
+#tsover_widgets, #tsover_widgets * {
+	margin: auto;
+}
+
+#tsover_val {
+	font-size: medium;
+	margin: auto;
+	margin-left: 20px;
+}
+
+.no-close .ui-dialog-titlebar-close, .no-close .ui-dialog-titlebar-close * {
+  display: none;
+}
+
+.ui-icon {
+	text-indent: 0;
+}
+
+.ui-dialog-titlebar{
+	text-align: center;
+	text-decoration: underline;
+}
+
+.ui-dialog {
+	float: none;
+	border: white solid;
+	border-radius: 6px;
+	font-size: small;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	padding: 0;
+}
+
+.ui-dialog .ui-resizable-se{
+	width: 9px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float:none;
+}
+
+.ui-dialog .ui-dialog-title, .ui-dialog-title {
+	float: none;
+}
+
+.ui-button {
+	background-color: black;
+	border: white solid 2px;
+	border-radius: 6px;
+	padding: none;
+	font-size: medium;
+}
+
+.ui-buttonset, .ui-buttonset .ui-button {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.ui-state-active {
+	color: black;
+	background-color: white;
+	border-color: black;
+	font-weight: bold;
+}
+
+select {
+	display: inline-block;
+	background-color: black;
+	color: white;
+}
+
+.ui-selectmenu-button {
+	margin: -5px;
+	display: none;
+}
+
+.ui-widget-overlay {
+	opacity: .5;
+}
+
+.ui-button-text-only .ui-button-text {
+	padding: .4em;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	background-color: white;
+	color: black;
+	height: auto;
+	width: auto;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 6px;
+	margin: 0px 0px 0px 0px;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: .5em;
+}
+
+.ui-datepicker {
+	border: solid white 1px;
+	border-radius: 6px;
+}
+
+.ui-datepicker a {
+	color: white;
+}
+
+.ui-datepicker .ui-state-active {
+	color: black;
+}
+
+#div_type *, #div_val *, #rakevet_form * {
+	padding: 3px 0;
+}
+
+#dialog * td {
+	float:right;
+}
+
+table , td{
+	margin: auto;
+}
