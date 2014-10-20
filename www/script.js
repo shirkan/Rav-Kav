@@ -144,8 +144,8 @@ function showMessage(type, title, message, callback, buttons) {
 
 $(document).ready( function () {
 
-	showMessage("alert", "welcome!", "welcoming", function (param) { alert("returned " + param)}, ["ok" , "close"] );
-	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { alert("confirm returned " + param)}, ["ok" , "close"] );
+	showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
+	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );
 
 	if (!isiOS()) {
 		$('#ios_statusbar').hide();
@@ -268,12 +268,12 @@ $(document).ready( function () {
     			break;
     		case txtHofshiHodshi:
     			{
-    				var begin = $val_date.val();
     				$val_date.datepicker('option', 'dateFormat', 'mm/dd/yy');
-    				var date = $val_date.val();
-    				var in30days = new Date(date);
-    				in30days.setDate(in30days.getDate() + 30);
-    				var end = in30days.getDate() + "/" + (in30days.getMonth() + 1) + "/" + in30days.getFullYear();
+    				var txtDate = $val_date.val();
+    				var date = new Date(txtDate);
+    				var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    				date.setDate(date.getDate() + 30);
+    				var end = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
     				return [txtHofshiHodshi, begin, end];
     			}
@@ -358,21 +358,21 @@ $(document).ready( function () {
 							} else {
 								//	Hofshi-Hodshi
 								if ( $('#date').val() != date) {
-									date = $('#date').val();
 									$('#date').datepicker('option', 'dateFormat', 'mm/dd/yy');
-									var new_date = $('#date').val();
-									var in30days = new Date(new_date);
-									in30days.setDate(in30days.getDate() + 30);
+									var txtDate = $('#date').val();
+									var date = new Date(txtDate);
+									var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+									date.setDate(date.getDate() + 30);
 
-									if (in30days < today) {
+									if (date < today) {
 										removeContract(id, key);
 									} else {
-										var end = in30days.getDate() + "/" + (in30days.getMonth() + 1) + "/" + in30days.getFullYear();
+										var end = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 										if (type == txtBus) {
-											raw[2] = date;
+											raw[2] = begin;
 											raw[3] = end;	
 										} else {
-											raw[4] = date;
+											raw[4] = begin;
 											raw[5] = end;	
 										}
 										
@@ -428,9 +428,12 @@ $(document).ready( function () {
 					var date = data[3];
 				}
 				
-				$editDialog.append("<div id='edit_div' style='display:inline-block'><input type='date' id='date' style='width:80px'/> :תאריך התחלה</div>");
-				$('#date').prop('type','text');
-				$('#date').datepicker().prop('type','text');
+				$editDialog.append("<div id='edit_div' style='display:inline-block'><input type='date' id='date' style='width:80px'/>"+ txtDate +"</div>");
+				if ( !(isiOS() || isAndroid())) {
+					$('#date').prop('type','text');
+					$('#date').datepicker().prop('type','text');
+				}
+			
 				$('#date').datepicker('option', 'dateFormat', 'dd/mm/yy');
 				$('#date').val(date);
 			}
@@ -628,8 +631,10 @@ $(document).ready( function () {
 	var $val_val = $('#val_val');
 	var $val_date = $('#val_date');
 	$val_date.hide();
-	$val_date.prop('type','text');
-	$val_date.datepicker().prop('type','text');
+	if ( !(isiOS() || isAndroid())) {
+		$val_date.prop('type','text');
+		$val_date.datepicker().prop('type','text');
+	}
 	$val_date.datepicker('option', 'dateFormat', 'dd/mm/yy');
 
 	$("input[name=contract_type]").change(function () {

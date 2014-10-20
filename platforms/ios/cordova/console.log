@@ -517,3 +517,129 @@ https://developer.apple.com/icloud/documentation/data-storage/
 2014-10-15 22:47:59.259 רב-קו[12568:163569] <Google> To get test ads on this device, call: request.testDevices = @[ GAD_SIMULATOR_ID ];
 2014-10-15 22:47:59.327 רב-קו[12568:163569] THREAD WARNING: ['AdMob'] took '158.984131' ms. Plugin should use a background thread.
 2014-10-15 22:48:01.102 רב-קו[12568:163569] -[CDVAdMob adViewDidReceiveAd:]: Received ad successfully.
+2014-10-20 10:42:01.930 רב-קו[8835:242075] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/shirkan/Library/Developer/CoreSimulator/Devices/800F76E8-2782-49C9-9B30-440026D75913/data/Containers/Data/Application/649886E8-DCF5-4490-9A03-CDE872E1F80B/Library/Cookies/Cookies.binarycookies
+2014-10-20 10:42:01.986 רב-קו[8835:242075] Apache Cordova native platform version 3.6.3 is starting.
+2014-10-20 10:42:01.987 רב-קו[8835:242075] Multi-tasking -> Device: YES, App: YES
+2014-10-20 10:42:02.019 רב-קו[8835:242075] Unlimited access to network resources
+2014-10-20 10:42:02.023 רב-קו[8835:242075] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+
+2014-10-20 10:42:02.580 רב-קו[8835:242075] [CDVTimer][statusbar] 123.094022ms
+2014-10-20 10:42:02.580 רב-קו[8835:242075] [CDVTimer][TotalPluginStartup] 123.290956ms
+2014-10-20 10:42:02.747 רב-קו[8835:242075] Resetting plugins due to page load.
+2014-10-20 10:42:09.602 רב-קו[8835:242075] Finished load of: file:///Users/shirkan/Library/Developer/CoreSimulator/Devices/800F76E8-2782-49C9-9B30-440026D75913/data/Containers/Bundle/Application/C750741D-706F-474A-AAAF-8BA9507FAFE8/%D7%A8%D7%91-%D7%A7%D7%95.app/www/index.html
+2014-10-20 10:42:09.651 רב-קו[8835:242075] setOptions
+2014-10-20 10:42:09.651 רב-קו[8835:242075] createBannerView
+2014-10-20 10:42:09.651 רב-קו[8835:242075] __createBanner
+2014-10-20 10:42:09.745 רב-קו[8835:242075] <Google> To get test ads on this device, call: request.testDevices = @[ GAD_SIMULATOR_ID ];
+2014-10-20 10:42:09.818 רב-קו[8835:242075] THREAD WARNING: ['AdMob'] took '167.435791' ms. Plugin should use a background thread.
+2014-10-20 10:42:11.897 רב-קו[8835:242075] -[CDVAdMob adViewDidReceiveAd:]: Received ad successfully.
+2014-10-20 10:52:12.662 רב-קו[9714:252402] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/shirkan/Library/Developer/CoreSimulator/Devices/800F76E8-2782-49C9-9B30-440026D75913/data/Containers/Data/Application/6927CC9C-AE24-49CB-B729-D2B89C274C1E/Library/Cookies/Cookies.binarycookies
+2014-10-20 10:52:12.746 רב-קו[9714:252402] *** Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[<UIApplication 0x7b8375d0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key view.'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x003f8df6 __exceptionPreprocess + 182
+	1   libobjc.A.dylib                     0x03177a97 objc_exception_throw + 44
+	2   CoreFoundation                      0x003f8a11 -[NSException raise] + 17
+	3   Foundation                          0x02b9dd5e -[NSObject(NSKeyValueCoding) setValue:forUndefinedKey:] + 282
+	4   Foundation                          0x02af9d88 _NSSetUsingKeyValueSetter + 115
+	5   Foundation                          0x02af9d0d -[NSObject(NSKeyValueCoding) setValue:forKey:] + 267
+	6   Foundation                          0x02b2f5f6 -[NSObject(NSKeyValueCoding) setValue:forKeyPath:] + 386
+	7   UIKit                               0x00add329 -[UIRuntimeOutletConnection connect] + 106
+	8   libobjc.A.dylib                     0x0318d724 -[NSObject performSelector:] + 62
+	9   CoreFoundation                      0x00332bbc -[NSArray makeObjectsPerformSelector:] + 316
+	10  UIKit                               0x00adbdea -[UINib instantiateWithOwner:options:] + 1775
+	11  UIKit                               0x00addc89 -[NSBundle(UINSBundleAdditions) loadNibNamed:owner:options:] + 180
+	12  UIKit                               0x007a937b -[UIApplication _loadMainNibFileNamed:bundle:] + 58
+	13  UIKit                               0x007a9694 -[UIApplication _loadMainInterfaceFile] + 245
+	14  UIKit                               0x007a803f -[UIApplication _runWithMainScene:transitionContext:completion:] + 1337
+	15  UIKit                               0x007c0d30 __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke + 59
+	16  UIKit                               0x007a6d7f -[UIApplication workspaceDidEndTransaction:] + 155
+	17  FrontBoardServices                  0x03cec9de __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71
+	18  FrontBoardServices                  0x03cec46f __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54
+	19  FrontBoardServices                  0x03cfe425 __31-[FBSSerialQueue performAsync:]_block_invoke + 26
+	20  CoreFoundation                      0x0031c7a0 __CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__ + 16
+	21  CoreFoundation                      0x003120b3 __CFRunLoopDoBlocks + 195
+	22  CoreFoundation                      0x00311f0b __CFRunLoopRun + 2715
+	23  CoreFoundation                      0x003111ab CFRunLoopRunSpecific + 443
+	24  CoreFoundation                      0x00310fdb CFRunLoopRunInMode + 123
+	25  UIKit                               0x007a6744 -[UIApplication _run] + 571
+	26  UIKit                               0x007a9e16 UIApplicationMain + 1526
+	27  ◊®◊ë-◊ß◊ï                           0x00114c2c main + 92
+	28  libdyld.dylib                       0x0384dac9 start + 1
+)
+libc++abi.dylib: terminating with uncaught exception of type NSException
+2014-10-20 10:52:54.340 רב-קו[9836:253749] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/shirkan/Library/Developer/CoreSimulator/Devices/800F76E8-2782-49C9-9B30-440026D75913/data/Containers/Data/Application/4F1D46D9-D213-40B9-97E2-4AC7912624BF/Library/Cookies/Cookies.binarycookies
+2014-10-20 10:52:54.589 רב-קו[9836:253749] *** Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[<UIApplication 0x798627e0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key view.'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x0030edf6 __exceptionPreprocess + 182
+	1   libobjc.A.dylib                     0x0308da97 objc_exception_throw + 44
+	2   CoreFoundation                      0x0030ea11 -[NSException raise] + 17
+	3   Foundation                          0x02ab3d5e -[NSObject(NSKeyValueCoding) setValue:forUndefinedKey:] + 282
+	4   Foundation                          0x02a0fd88 _NSSetUsingKeyValueSetter + 115
+	5   Foundation                          0x02a0fd0d -[NSObject(NSKeyValueCoding) setValue:forKey:] + 267
+	6   Foundation                          0x02a455f6 -[NSObject(NSKeyValueCoding) setValue:forKeyPath:] + 386
+	7   UIKit                               0x009f3329 -[UIRuntimeOutletConnection connect] + 106
+	8   libobjc.A.dylib                     0x030a3724 -[NSObject performSelector:] + 62
+	9   CoreFoundation                      0x00248bbc -[NSArray makeObjectsPerformSelector:] + 316
+	10  UIKit                               0x009f1dea -[UINib instantiateWithOwner:options:] + 1775
+	11  UIKit                               0x009f3c89 -[NSBundle(UINSBundleAdditions) loadNibNamed:owner:options:] + 180
+	12  UIKit                               0x006bf37b -[UIApplication _loadMainNibFileNamed:bundle:] + 58
+	13  UIKit                               0x006bf694 -[UIApplication _loadMainInterfaceFile] + 245
+	14  UIKit                               0x006be03f -[UIApplication _runWithMainScene:transitionContext:completion:] + 1337
+	15  UIKit                               0x006d6d30 __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke + 59
+	16  UIKit                               0x006bcd7f -[UIApplication workspaceDidEndTransaction:] + 155
+	17  FrontBoardServices                  0x03c029de __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71
+	18  FrontBoardServices                  0x03c0246f __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54
+	19  FrontBoardServices                  0x03c14425 __31-[FBSSerialQueue performAsync:]_block_invoke + 26
+	20  CoreFoundation                      0x002327a0 __CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__ + 16
+	21  CoreFoundation                      0x002280b3 __CFRunLoopDoBlocks + 195
+	22  CoreFoundation                      0x00227f0b __CFRunLoopRun + 2715
+	23  CoreFoundation                      0x002271ab CFRunLoopRunSpecific + 443
+	24  CoreFoundation                      0x00226fdb CFRunLoopRunInMode + 123
+	25  UIKit                               0x006bc744 -[UIApplication _run] + 571
+	26  UIKit                               0x006bfe16 UIApplicationMain + 1526
+	27  ◊®◊ë-◊ß◊ï                           0x0002ac2c main + 92
+	28  libdyld.dylib                       0x03763ac9 start + 1
+)
+libc++abi.dylib: terminating with uncaught exception of type NSException
+2014-10-20 10:55:33.305 רב-קו[10141:257128] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/shirkan/Library/Developer/CoreSimulator/Devices/800F76E8-2782-49C9-9B30-440026D75913/data/Containers/Data/Application/B146275B-2158-4A06-A961-BD6D5670C346/Library/Cookies/Cookies.binarycookies
+2014-10-20 10:55:33.381 רב-קו[10141:257128] *** Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[<UIApplication 0x78728800> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key view.'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x00340df6 __exceptionPreprocess + 182
+	1   libobjc.A.dylib                     0x030bfa97 objc_exception_throw + 44
+	2   CoreFoundation                      0x00340a11 -[NSException raise] + 17
+	3   Foundation                          0x02ae5d5e -[NSObject(NSKeyValueCoding) setValue:forUndefinedKey:] + 282
+	4   Foundation                          0x02a41d88 _NSSetUsingKeyValueSetter + 115
+	5   Foundation                          0x02a41d0d -[NSObject(NSKeyValueCoding) setValue:forKey:] + 267
+	6   Foundation                          0x02a775f6 -[NSObject(NSKeyValueCoding) setValue:forKeyPath:] + 386
+	7   UIKit                               0x00a25329 -[UIRuntimeOutletConnection connect] + 106
+	8   libobjc.A.dylib                     0x030d5724 -[NSObject performSelector:] + 62
+	9   CoreFoundation                      0x0027abbc -[NSArray makeObjectsPerformSelector:] + 316
+	10  UIKit                               0x00a23dea -[UINib instantiateWithOwner:options:] + 1775
+	11  UIKit                               0x00a25c89 -[NSBundle(UINSBundleAdditions) loadNibNamed:owner:options:] + 180
+	12  UIKit                               0x006f137b -[UIApplication _loadMainNibFileNamed:bundle:] + 58
+	13  UIKit                               0x006f1694 -[UIApplication _loadMainInterfaceFile] + 245
+	14  UIKit                               0x006f003f -[UIApplication _runWithMainScene:transitionContext:completion:] + 1337
+	15  UIKit                               0x00708d30 __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke + 59
+	16  UIKit                               0x006eed7f -[UIApplication workspaceDidEndTransaction:] + 155
+	17  FrontBoardServices                  0x03c349de __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71
+	18  FrontBoardServices                  0x03c3446f __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54
+	19  FrontBoardServices                  0x03c46425 __31-[FBSSerialQueue performAsync:]_block_invoke + 26
+	20  CoreFoundation                      0x002647a0 __CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__ + 16
+	21  CoreFoundation                      0x0025a0b3 __CFRunLoopDoBlocks + 195
+	22  CoreFoundation                      0x00259f0b __CFRunLoopRun + 2715
+	23  CoreFoundation                      0x002591ab CFRunLoopRunSpecific + 443
+	24  CoreFoundation                      0x00258fdb CFRunLoopRunInMode + 123
+	25  UIKit                               0x006ee744 -[UIApplication _run] + 571
+	26  UIKit                               0x006f1e16 UIApplicationMain + 1526
+	27  ◊®◊ë-◊ß◊ï                           0x0005cc2c main + 92
+	28  libdyld.dylib                       0x03795ac9 start + 1
+)
+libc++abi.dylib: terminating with uncaught exception of type NSException
