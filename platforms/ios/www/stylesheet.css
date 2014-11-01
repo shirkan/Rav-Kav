@@ -91,7 +91,7 @@ div {
 #tsover_val {
 	font-size: medium;
 	margin: auto;
-	margin-left: 20px;
+	text-align: center
 }
 
 .no-close .ui-dialog-titlebar-close, .no-close .ui-dialog-titlebar-close * {

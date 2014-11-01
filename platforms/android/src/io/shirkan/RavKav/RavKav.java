@@ -22,7 +22,7 @@ package io.shirkan.RavKav;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class HelloCordova extends CordovaActivity
+public class RavKav extends CordovaActivity
 {
     @Override
     public void onCreate(Bundle savedInstanceState)

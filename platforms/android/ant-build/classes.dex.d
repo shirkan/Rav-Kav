@@ -10,6 +10,7 @@
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/com/rjfun/cordova/plugin/AdMob$BasicListener.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/com/rjfun/cordova/plugin/AdMob$InterstitialListener.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/com/rjfun/cordova/plugin/AdMob.class \
+/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/iio/shirkan/RavKav/BuildConfig.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/BuildConfig.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/HelloCordova.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/R$attr.class \
@@ -26,6 +27,7 @@
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R$string.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R$xml.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R.class \
+/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/RavKav.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$1.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$2$1.class \
