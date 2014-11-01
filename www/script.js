@@ -54,6 +54,18 @@ function isiOS (){
 	return ( /(ipad|iphone|ipod)/i.test(navigator.userAgent) );
 }
 
+//	Reformat date from dd/mm/yy to mm/dd/yy
+function swapDateDayWithMonth (date) {
+	var dateArray = date.split("/")
+	return dateArray[1] + "/" + dateArray[0] + "/" + dateArray[2]
+}
+
+function dateFormat(date) {
+	var dateArray = date.split("/")
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+	return months[dateArray[1]-1] + " " + dateArray[0] + ", " + dateArray[2]
+}
+
 function initAd(){
     if ( window.plugins && window.plugins.AdMob ) {
 	    var ad_units = {
@@ -145,7 +157,7 @@ function showMessage(type, title, message, callback, buttons) {
 $(document).ready( function () {
 
 	showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
-	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );
+	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
 
 	if (!isiOS()) {
 		$('#ios_statusbar').hide();
@@ -271,6 +283,13 @@ $(document).ready( function () {
     				$val_date.datepicker('option', 'dateFormat', 'mm/dd/yy');
     				var txtDate = $val_date.val();
     				var date = new Date(txtDate);
+    				if (date == "Invalid Date") {
+						console.log("Invalid date! " + date)
+						return null;
+					}if (date == "Invalid Date") {
+										console.log("Invalid date! " + date)
+										return
+									}
     				var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     				date.setDate(date.getDate() + 30);
     				var end = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -361,6 +380,12 @@ $(document).ready( function () {
 									$('#date').datepicker('option', 'dateFormat', 'mm/dd/yy');
 									var txtDate = $('#date').val();
 									var date = new Date(txtDate);
+
+									if (date == "Invalid Date") {
+										console.log("Invalid date! " + date)
+										return
+									}
+
 									var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 									date.setDate(date.getDate() + 30);
 
@@ -432,6 +457,13 @@ $(document).ready( function () {
 				if ( !(isiOS() || isAndroid())) {
 					$('#date').prop('type','text');
 					$('#date').datepicker().prop('type','text');
+				} else {
+
+					if (isiOS()) {
+						//	Need to swap dd with mm on iOS
+						date = swapDateDayWithMonth(date)
+					}
+					alert(date)
 				}
 			
 				$('#date').datepicker('option', 'dateFormat', 'dd/mm/yy');
