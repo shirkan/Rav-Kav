@@ -1,4 +1,4 @@
-/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/HelloCordova.ap_ \
+/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/RavKav.ap_ \
  : /Users/shirkan/GitHub/Rav-Kav/platforms/android/res/drawable/icon.png \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/res/drawable-land-hdpi/screen.png \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/res/drawable-land-ldpi/screen.png \

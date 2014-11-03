@@ -19,7 +19,7 @@
         <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
 
 	</head>
-	<body onload="onDocLoad()" onresize="onResize()">
+	<body onload="onDocLoad()">
 		<div id="ios_statusbar" style="height:20px"></div>
 		<div id="outer_div">
 			<div id="body_div">
@@ -43,167 +43,159 @@
 				</table>
 			</div>
 		</div>
-	</body>	        
-	    <!-- Add contract floating menu -->
-	    <div id="edit_dialog"> </div>
-		<div id="dialog">
-			<table>
-			<td id="radioset">
-				<table>
-					<td><input type="radio" id="radio1" name="contract_type" value="rakevet"><label id="lradio1" for="radio1">רכבת</label></td>
-					<td><input type="radio" id="radio2" name="contract_type" value="bus"><label id="lradio2" for="radio2">אוטובוס</label></td>
-					<td><input type="radio" id="radio3" name="contract_type" value="tsover"><label id="lradio3" for="radio3">ערך צבור</label></td>
-				</table>
-			</td>
-			<tr><td>
-				<table id="rakevet_form" style="display:none">
-					<td>:מוצא</td>
-					<td>
-						<select id="rakevet_src" style="width:135px;">
-						<option selected="selected" value="">בחר תחנה</option>
-						<option value="5800">אשדוד עד הלום</option>
-						<option value="5900">אשקלון</option>
-						<option value="5300">באר יעקב</option>
-						<option value="7320">באר שבע-מרכז</option>
-						<option value="7300">באר שבע-צפון/האוניברסיטה</option>
-						<option value="3400">בית יהושע</option>
-						<option value="6300">בית שמש</option>
-						<option value="4100">בני ברק</option>
-						<option value="2800">בנימינה</option>
-						<option value="4680">בת ים-יוספטל</option>
-						<option value="4690">בת ים-קוממיות</option>
-						<option value="7500">דימונה</option>
-						<option value="9200">הוד השרון-סוקולוב</option>
-						<option value="3500">הרצלייה</option>
-						<option value="3100">חדרה-מערב</option>
-						<option value="4660">חולון-וולפסון</option>
-						<option value="1300">חוצות המפרץ</option>
-						<option value="2100">חיפה מרכז-השמונה</option>
-						<option value="2200">חיפה-בת גלים</option>
-						<option value="2300">חיפה-חוף הכרמל</option>
-						<option value="5410">יבנה-מזרח</option>
-						<option value="9000">יבנה-מערב</option>
-						<option value="6500">ירושלים-גן החיות התנ"כי</option>
-						<option value="6700">ירושלים-מלחה</option>
-						<option value="4800">כפר חב"ד</option>
-						<option value="8700">כפר סבא-נורדאו</option>
-						<option value="1220">לב המפרץ</option>
-						<option value="8550">להבים-רהט</option>
-						<option value="5000">לוד</option>
-						<option value="5150">לוד-גני אביב</option>
-						<option value="400">מודיעין-מרכז</option>
-						<option value="1600">נהרייה</option>
-						<option value="8600">נמל תעופה בן גוריון</option>
-						<option value="3300">נתניה</option>
-						<option value="1500">עכו</option>
-						<option value="2500">עתלית</option>
-						<option value="300">פאתי מודיעין</option>
-						<option value="4250">פתח תקווה-סגולה</option>
-						<option value="4170">פתח תקווה-קריית אריה</option>
-						<option value="4640">צומת חולון</option>
-						<option value="2820">קיסריה-פרדס חנה</option>
-						<option value="7000">קריית גת</option>
-						<option value="700">קריית חיים</option>
-						<option value="800">קריית מוצקין</option>
-						<option value="8800">ראש העין-צפון</option>
-						<option value="9100">ראשון לציון-הראשונים</option>
-						<option value="9800">ראשון לציון-משה דיין</option>
-						<option value="5200">רחובות</option>
-						<option value="5010">רמלה</option>
-						<option value="9600">שדרות</option>
-						<option value="3600">ת"א-אוניברסיטה</option>
-						<option value="4900">ת"א-ההגנה</option>
-						<option value="4600">ת"א-השלום</option>
-						<option value="3700">ת"א-סבידור מרכז</option>
-						</select>
-					</td>
-				<tr>
-					<td style="margin-left:11px">:יעד</td>
-					<td>
-						<select id="rakevet_dest" style="width:135px">
-						<option selected="selected" value="">בחר תחנה</option>
-						<option value="5800">אשדוד עד הלום</option>
-						<option value="5900">אשקלון</option>
-						<option value="5300">באר יעקב</option>
-						<option value="7320">באר שבע-מרכז</option>
-						<option value="7300">באר שבע-צפון/האוניברסיטה</option>
-						<option value="3400">בית יהושע</option>
-						<option value="6300">בית שמש</option>
-						<option value="4100">בני ברק</option>
-						<option value="2800">בנימינה</option>
-						<option value="4680">בת ים-יוספטל</option>
-						<option value="4690">בת ים-קוממיות</option>
-						<option value="7500">דימונה</option>
-						<option value="9200">הוד השרון-סוקולוב</option>
-						<option value="3500">הרצלייה</option>
-						<option value="3100">חדרה-מערב</option>
-						<option value="4660">חולון-וולפסון</option>
-						<option value="1300">חוצות המפרץ</option>
-						<option value="2100">חיפה מרכז-השמונה</option>
-						<option value="2200">חיפה-בת גלים</option>
-						<option value="2300">חיפה-חוף הכרמל</option>
-						<option value="5410">יבנה-מזרח</option>
-						<option value="9000">יבנה-מערב</option>
-						<option value="6500">ירושלים-גן החיות התנ"כי</option>
-						<option value="6700">ירושלים-מלחה</option>
-						<option value="4800">כפר חב"ד</option>
-						<option value="8700">כפר סבא-נורדאו</option>
-						<option value="1220">לב המפרץ</option>
-						<option value="8550">להבים-רהט</option>
-						<option value="5000">לוד</option>
-						<option value="5150">לוד-גני אביב</option>
-						<option value="400">מודיעין-מרכז</option>
-						<option value="1600">נהרייה</option>
-						<option value="8600">נמל תעופה בן גוריון</option>
-						<option value="3300">נתניה</option>
-						<option value="1500">עכו</option>
-						<option value="2500">עתלית</option>
-						<option value="300">פאתי מודיעין</option>
-						<option value="4250">פתח תקווה-סגולה</option>
-						<option value="4170">פתח תקווה-קריית אריה</option>
-						<option value="4640">צומת חולון</option>
-						<option value="2820">קיסריה-פרדס חנה</option>
-						<option value="7000">קריית גת</option>
-						<option value="700">קריית חיים</option>
-						<option value="800">קריית מוצקין</option>
-						<option value="8800">ראש העין-צפון</option>
-						<option value="9100">ראשון לציון-הראשונים</option>
-						<option value="9800">ראשון לציון-משה דיין</option>
-						<option value="5200">רחובות</option>
-						<option value="5010">רמלה</option>
-						<option value="9600">שדרות</option>
-						<option value="3600">ת"א-אוניברסיטה</option>
-						<option value="4900">ת"א-ההגנה</option>
-						<option value="4600">ת"א-השלום</option>
-						<option value="3700">ת"א-סבידור מרכז</option>
-						</select>
-					</td>
-				</tr>
-				</table>
-			</td></tr>
-			<tr><td>
-				<table id="div_type">
-				<tr>
-					<td style="margin-left:11px">:סוג</td>
-					<td>
-						<select id="selectmenu">
-						<option selected="selected">כרטיסיה</option>
-						<option >חופשי-חודשי</option>
-						</select>
-					</td>
-				</tr>
-				</table>
-			</td></tr>
-			<tr><td>
-				<table id="div_val">
-				<tr>
-					<td> <div id="lbl_val"></div> </td>
-					<td>
-						<input type="number" id="val_val" style="width:50px"/> <input type="date" id="val_date" style="width:70px"/>
-					</td>
-				</tr>
-				</table>
-			</td></tr>
-			</table>
-		</div>	
+	</body>	  
+
+    <!-- Add contract floating menu -->
+    <div id="edit_dialog"> </div>
+	<div id="dialog">
+		<table id="radioset_table">
+			<tr id="radioset">
+				<td><input type="radio" id="radio1" name="contract_type" value="rakevet"><label id="lradio1" for="radio1">רכבת</label></td>
+				<td><input type="radio" id="radio2" name="contract_type" value="bus"><label id="lradio2" for="radio2">אוטובוס</label></td>
+				<td><input type="radio" id="radio3" name="contract_type" value="tsover"><label id="lradio3" for="radio3">ערך צבור</label></td>
+			</tr>
+		</table>
+		<table id="options_table">
+			<tr id="rakevet_form_a" style="display:none">
+				<td>
+					<select id="rakevet_src">
+					<option selected="selected" value="">בחר תחנה</option>
+					<option value="5800">אשדוד עד הלום</option>
+					<option value="5900">אשקלון</option>
+					<option value="5300">באר יעקב</option>
+					<option value="7320">באר שבע-מרכז</option>
+					<option value="7300">באר שבע-צפון/האוניברסיטה</option>
+					<option value="3400">בית יהושע</option>
+					<option value="6300">בית שמש</option>
+					<option value="4100">בני ברק</option>
+					<option value="2800">בנימינה</option>
+					<option value="4680">בת ים-יוספטל</option>
+					<option value="4690">בת ים-קוממיות</option>
+					<option value="7500">דימונה</option>
+					<option value="9200">הוד השרון-סוקולוב</option>
+					<option value="3500">הרצלייה</option>
+					<option value="3100">חדרה-מערב</option>
+					<option value="4660">חולון-וולפסון</option>
+					<option value="1300">חוצות המפרץ</option>
+					<option value="2100">חיפה מרכז-השמונה</option>
+					<option value="2200">חיפה-בת גלים</option>
+					<option value="2300">חיפה-חוף הכרמל</option>
+					<option value="5410">יבנה-מזרח</option>
+					<option value="9000">יבנה-מערב</option>
+					<option value="6500">ירושלים-גן החיות התנ"כי</option>
+					<option value="6700">ירושלים-מלחה</option>
+					<option value="4800">כפר חב"ד</option>
+					<option value="8700">כפר סבא-נורדאו</option>
+					<option value="1220">לב המפרץ</option>
+					<option value="8550">להבים-רהט</option>
+					<option value="5000">לוד</option>
+					<option value="5150">לוד-גני אביב</option>
+					<option value="400">מודיעין-מרכז</option>
+					<option value="1600">נהרייה</option>
+					<option value="8600">נמל תעופה בן גוריון</option>
+					<option value="3300">נתניה</option>
+					<option value="1500">עכו</option>
+					<option value="2500">עתלית</option>
+					<option value="300">פאתי מודיעין</option>
+					<option value="4250">פתח תקווה-סגולה</option>
+					<option value="4170">פתח תקווה-קריית אריה</option>
+					<option value="4640">צומת חולון</option>
+					<option value="2820">קיסריה-פרדס חנה</option>
+					<option value="7000">קריית גת</option>
+					<option value="700">קריית חיים</option>
+					<option value="800">קריית מוצקין</option>
+					<option value="8800">ראש העין-צפון</option>
+					<option value="9100">ראשון לציון-הראשונים</option>
+					<option value="9800">ראשון לציון-משה דיין</option>
+					<option value="5200">רחובות</option>
+					<option value="5010">רמלה</option>
+					<option value="9600">שדרות</option>
+					<option value="3600">ת"א-אוניברסיטה</option>
+					<option value="4900">ת"א-ההגנה</option>
+					<option value="4600">ת"א-השלום</option>
+					<option value="3700">ת"א-סבידור מרכז</option>
+					</select>
+				</td>
+				<td>:מוצא</td>
+				
+			</tr>
+			<tr id="rakevet_form_b" style="display:none">
+				<td>
+					<select id="rakevet_dest">
+					<option selected="selected" value="">בחר תחנה</option>
+					<option value="5800">אשדוד עד הלום</option>
+					<option value="5900">אשקלון</option>
+					<option value="5300">באר יעקב</option>
+					<option value="7320">באר שבע-מרכז</option>
+					<option value="7300">באר שבע-צפון/האוניברסיטה</option>
+					<option value="3400">בית יהושע</option>
+					<option value="6300">בית שמש</option>
+					<option value="4100">בני ברק</option>
+					<option value="2800">בנימינה</option>
+					<option value="4680">בת ים-יוספטל</option>
+					<option value="4690">בת ים-קוממיות</option>
+					<option value="7500">דימונה</option>
+					<option value="9200">הוד השרון-סוקולוב</option>
+					<option value="3500">הרצלייה</option>
+					<option value="3100">חדרה-מערב</option>
+					<option value="4660">חולון-וולפסון</option>
+					<option value="1300">חוצות המפרץ</option>
+					<option value="2100">חיפה מרכז-השמונה</option>
+					<option value="2200">חיפה-בת גלים</option>
+					<option value="2300">חיפה-חוף הכרמל</option>
+					<option value="5410">יבנה-מזרח</option>
+					<option value="9000">יבנה-מערב</option>
+					<option value="6500">ירושלים-גן החיות התנ"כי</option>
+					<option value="6700">ירושלים-מלחה</option>
+					<option value="4800">כפר חב"ד</option>
+					<option value="8700">כפר סבא-נורדאו</option>
+					<option value="1220">לב המפרץ</option>
+					<option value="8550">להבים-רהט</option>
+					<option value="5000">לוד</option>
+					<option value="5150">לוד-גני אביב</option>
+					<option value="400">מודיעין-מרכז</option>
+					<option value="1600">נהרייה</option>
+					<option value="8600">נמל תעופה בן גוריון</option>
+					<option value="3300">נתניה</option>
+					<option value="1500">עכו</option>
+					<option value="2500">עתלית</option>
+					<option value="300">פאתי מודיעין</option>
+					<option value="4250">פתח תקווה-סגולה</option>
+					<option value="4170">פתח תקווה-קריית אריה</option>
+					<option value="4640">צומת חולון</option>
+					<option value="2820">קיסריה-פרדס חנה</option>
+					<option value="7000">קריית גת</option>
+					<option value="700">קריית חיים</option>
+					<option value="800">קריית מוצקין</option>
+					<option value="8800">ראש העין-צפון</option>
+					<option value="9100">ראשון לציון-הראשונים</option>
+					<option value="9800">ראשון לציון-משה דיין</option>
+					<option value="5200">רחובות</option>
+					<option value="5010">רמלה</option>
+					<option value="9600">שדרות</option>
+					<option value="3600">ת"א-אוניברסיטה</option>
+					<option value="4900">ת"א-ההגנה</option>
+					<option value="4600">ת"א-השלום</option>
+					<option value="3700">ת"א-סבידור מרכז</option>
+					</select>
+				</td>
+				<td >:יעד</td>
+			</tr>
+			<tr id="div_type">
+				<td>
+					<select id="selectmenu" style="wdith:100%">
+					<option selected="selected">כרטיסיה</option>
+					<option >חופשי-חודשי</option>
+					</select>
+				</td>
+				<td >:סוג</td>
+			</tr>
+			<tr id="div_val">
+				<td>
+					<input type="number" id="val_val"/> <input type="date" id="val_date"/>
+				</td>
+				<td> <div id="lbl_val"></div> </td>
+			</tr>
+		</table>
+	</div>	
 </html>

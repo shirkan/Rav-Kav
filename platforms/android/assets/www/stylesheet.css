@@ -198,14 +198,15 @@ select {
 	color: black;
 }
 
-#div_type *, #div_val *, #rakevet_form * {
+#div_type *, #div_val * {
 	padding: 3px 0;
 }
 
 #dialog * td {
-	float:right;
+	text-align:right;
 }
 
-table , td{
-	margin: auto;
+table , td, tr, table tr, table tr td, table * {
+	margin: 3px;
+	/*border: solid white 1px;*/
 }

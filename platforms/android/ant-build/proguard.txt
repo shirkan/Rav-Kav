@@ -2,5 +2,5 @@
 -keep class com.google.android.gms.ads.AdActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:6
--keep class io.shirkan.RavKav.HelloCordova { <init>(...); }
+-keep class io.shirkan.RavKav.RavKav { <init>(...); }
 

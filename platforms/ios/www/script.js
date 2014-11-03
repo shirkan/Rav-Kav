@@ -2,6 +2,8 @@
 var numContracts = ( localStorage.numContracts ? localStorage.numContracts : 0);
 var contractID = ( localStorage.contractID ? localStorage.contractID : 0);
 var today = new Date();
+var todayFormatted = today.getFullYear() + "-" + ("0" + (today.getMonth() + 1)).slice(-2) + "-" + ("0" + today.getDate()).slice(-2);
+var todayNotFormatted = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
 var before30days = new Date();
 before30days.setDate(today.getDate() - 30);
 
@@ -11,12 +13,12 @@ const initCaritisiaBus = 15;
 const initCaritisiaRakevet = 12;
 const initTsover = 100;
 const tsoverWidth = "80px";
-const cartisiaWidth = "50px";
+// const cartisiaWidth = "50px";
 const adMobBannerPct = .83;
 
 // Text constants
-const txtNesiot = ":הכנס מספר נסיעות";
-const txtDate = ":הכנס תאריך התחלה"
+const txtNesiot = ":מס׳ נסיעות";
+const txtDate = ":תאריך התחלה"
 const txtSum = ":הכנס סכום";
 const txtCartisia = "כרטיסיה";
 const txtHofshiHodshi = "חופשי-חודשי"
@@ -60,10 +62,10 @@ function swapDateDayWithMonth (date) {
 	return dateArray[1] + "/" + dateArray[0] + "/" + dateArray[2]
 }
 
-function dateFormat(date) {
+//	input is in format of dd/mm/yyyy
+function iOSAndroidDateFormat(date) {
 	var dateArray = date.split("/")
-	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-	return months[dateArray[1]-1] + " " + dateArray[0] + ", " + dateArray[2]
+	return dateArray[2] + "-" + ("0" + dateArray[1]).slice(-2) + "-" + ("0" + dateArray[0]).slice(-2);
 }
 
 function initAd(){
@@ -111,11 +113,6 @@ function registerAdEvents() {
     document.addEventListener('onDismissInterstitialAd', function(){ });
 }
 
-function onResize() {
-    var msg = 'web view: ' + window.innerWidth + ' x ' + window.innerHeight;
-    document.getElementById('sizeinfo').innerHTML = msg;
-}
-
 function showMessage(type, title, message, callback, buttons) {
 
     title = title || "default title";
@@ -156,6 +153,18 @@ function showMessage(type, title, message, callback, buttons) {
 
 $(document).ready( function () {
 
+	function closeEditDialog() {
+		$('#edit_div').remove();
+		$('#edit_dialog').dialog("close")
+		document.removeEventListener("backbutton", closeEditDialog, false);
+	}
+
+	function closeDialog() {
+		clearForm();
+		$("#dialog").dialog("close")
+		document.removeEventListener("backbutton", closeDialog, false);
+	}
+
 	showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
 	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
 
@@ -187,7 +196,8 @@ $(document).ready( function () {
 		$button_bg.css({'background-color':'white'});
 
 		$dialog.dialog("open");
-		
+		// register Android back button
+		document.addEventListener("backbutton", closeDialog, false);
 		event.preventDefault();
 	});
 
@@ -254,7 +264,8 @@ $(document).ready( function () {
     function clearForm() {
     	clearContracType();
     	$("#val_val").val(0);
-    	$rakevet_form.hide();
+    	$rakevet_form_a.hide();
+    	$rakevet_form_b.hide();
     	$div_type.hide();
     	$div_val.hide();
     }
@@ -286,11 +297,9 @@ $(document).ready( function () {
     				if (date == "Invalid Date") {
 						console.log("Invalid date! " + date)
 						return null;
-					}if (date == "Invalid Date") {
-										console.log("Invalid date! " + date)
-										return
-									}
-    				var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+					}
+					
+					var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     				date.setDate(date.getDate() + 30);
     				var end = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
@@ -376,14 +385,16 @@ $(document).ready( function () {
 
 							} else {
 								//	Hofshi-Hodshi
-								if ( $('#date').val() != date) {
-									$('#date').datepicker('option', 'dateFormat', 'mm/dd/yy');
-									var txtDate = $('#date').val();
+								if ( $('#edit_date').val() != date) {
+									$('#edit_date').datepicker('option', 'dateFormat', 'mm/dd/yy');
+									var txtDate = $('#edit_date').val();
 									var date = new Date(txtDate);
 
 									if (date == "Invalid Date") {
 										console.log("Invalid date! " + date)
-										return
+
+										// 	Stop processing, quit dialog
+										closeEditDialog()
 									}
 
 									var begin = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -407,8 +418,7 @@ $(document).ready( function () {
 								}
 							}
 						}
-						$('#edit_div').remove();
-						$( this ).dialog( "close" );
+						closeEditDialog()
 					}
 				}
 			]
@@ -453,25 +463,23 @@ $(document).ready( function () {
 					var date = data[3];
 				}
 				
-				$editDialog.append("<div id='edit_div' style='display:inline-block'><input type='date' id='date' style='width:80px'/>"+ txtDate +"</div>");
+				$editDialog.append("<div id='edit_div' style='display:inline-block'><input type='date' id='edit_date' style='width:80px'/>"+ txtDate +"</div>");
 				if ( !(isiOS() || isAndroid())) {
-					$('#date').prop('type','text');
-					$('#date').datepicker().prop('type','text');
+					$('#edit_date').prop('type','text');
+					$('#edit_date').datepicker().prop('type','text');
 				} else {
-
-					if isiOS() {
-						//	Need to swap dd with mm on iOS
-						date = swapDateDayWithMonth(date)
-					}
-					alert(date)
+					date = iOSAndroidDateFormat(date)
 				}
 			
-				$('#date').datepicker('option', 'dateFormat', 'dd/mm/yy');
-				$('#date').val(date);
+				$('#edit_date').datepicker('option', 'dateFormat', 'dd/mm/yy');
+				$('#edit_date').val(date);
 			}
 		}
 
 		$editDialog.dialog("open");
+
+		// register Android back button
+		document.addEventListener("backbutton", closeEditDialog, false);
     }
 
     // 	Rakevet & Bus generic add contract
@@ -586,8 +594,7 @@ $(document).ready( function () {
 				text: "בטל",
 				style: "float:left",
 				click: function() {
-					clearForm();
-					$( this ).dialog( "close" );
+					closeDialog();
 				}
 			},
 			{
@@ -624,8 +631,7 @@ $(document).ready( function () {
 					}
 
 					if (ok) {
-						clearForm();
-						$( this ).dialog( "close" );	
+						closeDialog();	
 					}
 				}
 			}
@@ -636,8 +642,10 @@ $(document).ready( function () {
 
 	$("#radioset").buttonset();
 
-	$rakevet_form = $('#rakevet_form');
-	$rakevet_form.hide();
+	$rakevet_form_a = $('#rakevet_form_a');
+	$rakevet_form_a.hide();
+	$rakevet_form_b = $('#rakevet_form_b');
+	$rakevet_form_b.hide();
 
 	var $selectmenu = $("#selectmenu").selectmenu();
 	$selectmenu.change(function () {
@@ -673,14 +681,20 @@ $(document).ready( function () {
 		var val = $('input[name=contract_type]:checked').val();
 
 		$val_val.val("");
-		$val_date.val("");
 
+		if (isiOS() || isAndroid() ) {
+			$val_date.val(todayFormatted);
+		} else {
+			$val_date.val(todayNotFormatted);	
+		}
+		
 		// Display value modification widgets
 		$div_val.show();
 
 		if ( val == 'rakevet') {
 			//Display rakevet form
-			$rakevet_form.show();
+			$rakevet_form_a.show();
+			$rakevet_form_b.show();
 
 			// Display combo box 
 			$selectmenu.show();
@@ -689,7 +703,7 @@ $(document).ready( function () {
 			// Change value widgets
 			$selectmenu.val(txtCartisia);
 			$("#lbl_val").text(txtNesiot);
-			$val_val.css('width', cartisiaWidth);
+			// $val_val.css('width', cartisiaWidth);
 			$val_date.hide();
 			$val_val.show();
 			$val_val.val(initCaritisiaRakevet);
@@ -698,7 +712,8 @@ $(document).ready( function () {
 
 		if ( val == 'bus') {
 			//Don't display rakevet form
-			$rakevet_form.hide();
+			$rakevet_form_a.hide();
+			$rakevet_form_b.hide();
 			
 			// Display combo box 
 			$div_type.show();
@@ -707,7 +722,7 @@ $(document).ready( function () {
 			// Change value widgets
 			$selectmenu.val(txtCartisia);
 			$("#lbl_val").text(txtNesiot);
-			$val_val.css('width', cartisiaWidth);
+			// $val_val.css('width', cartisiaWidth);
 			$val_date.hide();
 			$val_val.show();
 			$val_val.val(initCaritisiaBus);
@@ -716,7 +731,8 @@ $(document).ready( function () {
 
 		if ( val == 'tsover') {
 			//Don't display rakevet form
-			$rakevet_form.hide();
+			$rakevet_form_a.hide();
+			$rakevet_form_b.hide();
 
 			// Don't display combo box 
 			$selectmenu.hide();
@@ -724,7 +740,7 @@ $(document).ready( function () {
 
 			// Change value widgets
 			$("#lbl_val").text(txtSum);
-			$val_val.css('width', tsoverWidth);
+			// $val_val.css('width', tsoverWidth);
 			$val_date.hide();
 			$val_val.show();
 			$val_val.val(initTsover);

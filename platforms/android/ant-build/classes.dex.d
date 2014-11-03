@@ -11,7 +11,6 @@
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/com/rjfun/cordova/plugin/AdMob$InterstitialListener.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/com/rjfun/cordova/plugin/AdMob.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/iio/shirkan/RavKav/BuildConfig.class \
-/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/BuildConfig.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/HelloCordova.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/R$attr.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/R$drawable.class \
@@ -20,7 +19,6 @@
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/R$xml.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/cordova/hellocordova/R.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/BuildConfig.class \
-/Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/HelloCordova.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R$attr.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R$drawable.class \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/ant-build/classes/io/shirkan/RavKav/R$integer.class \

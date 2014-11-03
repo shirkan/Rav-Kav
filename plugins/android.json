@@ -65,7 +65,7 @@
     },
     "installed_plugins": {
         "com.rjfun.cordova.plugin.admob": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.shirkan.RavKav"
         },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "io.shirkan.RavKav"
@@ -82,7 +82,7 @@
     },
     "dependent_plugins": {
         "com.google.admobsdk-googleplay": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.shirkan.RavKav"
         }
     }
 }
