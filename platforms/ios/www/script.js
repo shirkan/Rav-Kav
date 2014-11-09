@@ -165,8 +165,8 @@ $(document).ready( function () {
 		document.removeEventListener("backbutton", closeDialog, false);
 	}
 
-	showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
-	showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
+	// showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
+	// showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
 
 	if (!isiOS()) {
 		$('#ios_statusbar').hide();
