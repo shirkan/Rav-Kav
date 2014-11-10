@@ -3,15 +3,11 @@ body {
 	font-family: Arial;
 }
 
-#outer_div {
+#outerDiv {
 	height: 100% !important;
 }
 
-h3 {
-	color: white;
-}
-
-h4 {
+h3, h4 {
 	color: white;
 }
 
@@ -20,7 +16,7 @@ div {
 	background-color: black;
 }
 
-#body_div {
+#bodyDiv {
 	text-align: center;
 	height: 90% !important;
 	width: auto;
@@ -32,14 +28,13 @@ div {
 	position: relative;
 }
 
-#button_back {
+#addContractButtonBG {
 	background-color: white;
 	border-radius: 6px;
 	display: inline-block;
-/*	position: absolute;*/
 }
 
-#addContract {
+#addContractButton {
 	background-color: white;
 	color: black;
 	font-style: bold;
@@ -52,17 +47,17 @@ div {
 	margin: 3px 3px 3px 3px;
 }
 
-#contracts {
+#contractsCanvas {
 	overflow: auto;
 	display: block;
 }
 
-#contracts div {
+#contractsCanvas div {
 	padding: 0 4px;
 	display: block;
 }
 
-#contracts button {
+#contractsCanvas button {
 	width: auto;
 	height: auto;
 	color: white;
@@ -73,22 +68,22 @@ div {
 	font-family: Arial;
 }
 
-#edit_div button {
+#contractEditDiv button {
 	color: white;
 	background-color: black;
 	border:	solid 2px white;
 	border-radius: 6px;
 }
 
-#edit_div input {
+#contractEditDiv input {
 	font-size: small;
 }
 
-#tsover_widgets, #tsover_widgets * {
+/*#tsover_widgets, #tsover_widgets * {
 	margin: auto;
-}
+}*/
 
-#tsover_val {
+#contractEditLabel {
 	font-size: medium;
 	margin: auto;
 	text-align: center
@@ -122,12 +117,8 @@ div {
 	width: 9px;
 }
 
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset, .ui-dialog .ui-dialog-title, .ui-dialog-title {
 	float:none;
-}
-
-.ui-dialog .ui-dialog-title, .ui-dialog-title {
-	float: none;
 }
 
 .ui-button {
@@ -198,11 +189,11 @@ select {
 	color: black;
 }
 
-#div_type *, #div_val * {
+#typeTR *, #valueTR * {
 	padding: 3px 0;
 }
 
-#dialog * td {
+#addContractDialog * td {
 	text-align:right;
 }
 

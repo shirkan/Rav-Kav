@@ -8,36 +8,39 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 		<meta charset="utf-8">
         
-        <script type='text/javascript' src='jquery-2.1.1.js'></script>
-        <script type="text/javascript" src='floating-1.12.js'></script>
-        <script type="text/javascript" src='jquery.mobile.min.js'></script>
-        <script type="text/javascript" src='jquery-ui.min.js'></script>
+        <script type='text/javascript' src='js/jquery-2.1.1.js'></script>
+        <script type="text/javascript" src='js/floating-1.12.js'></script>
+        <script type="text/javascript" src='js/jquery.mobile.min.js'></script>
+        <script type="text/javascript" src='js/jquery-ui.min.js'></script>
         <script type="text/javascript" src="cordova.js"></script>
         
-        <script type='text/javascript' src='script.js'></script>
-        <link rel='stylesheet' type='text/css' href='jquery-ui.css'/>
-        <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
+        <script type='text/javascript' src='js/utilities.js'></script>
+        <script type='text/javascript' src='js/phonegap-utilities.js'></script>
+        <script type='text/javascript' src='js/admob.js'></script>
+        <script type='text/javascript' src='js/ravkav.js'></script>
+        <link rel='stylesheet' type='text/css' href='css/jquery-ui.css'/>
+        <link rel='stylesheet' type='text/css' href='css/stylesheet.css'/>
 
 	</head>
 	<body onload="onDocLoad()">
-		<div id="ios_statusbar" style="height:20px"></div>
-		<div id="outer_div">
-			<div id="body_div">
+		<div id="iosStatusBar" style="height:20px"></div>
+		<div id="outerDiv">
+			<div id="bodyDiv">
 				<table style="width:100%">
 			        <!-- Header -->
-			        <tr><td id="headertd">
+			        <tr><td id="headerTD">
 			        	<h3>:החוזים שלך</h3> 
 			    	</td></tr>
 			        
 			        <!-- Contracts -->
 			        <tr><td>
-			        	<div id="contracts"></div>
+			        	<div id="contractsCanvas"></div>
 			        </td></tr>
 			        
 			        <!-- Add contract button -->
-			        <tr><td id="buttontd">
-				        <div id="button_back">
-					        <button id="addContract">הוסף חוזה חדש</button>
+			        <tr><td id="buttonTD">
+				        <div id="addContractButtonBG">
+					        <button id="addContractButton">הוסף חוזה חדש</button>
 					    </div>
 					</td></tr>
 				</table>
@@ -46,19 +49,19 @@
 	</body>	  
 
     <!-- Add contract floating menu -->
-    <div id="edit_dialog"> </div>
-	<div id="dialog">
-		<table id="radioset_table">
-			<tr id="radioset">
-				<td><input type="radio" id="radio1" name="contract_type" value="rakevet"><label id="lradio1" for="radio1">רכבת</label></td>
-				<td><input type="radio" id="radio2" name="contract_type" value="bus"><label id="lradio2" for="radio2">אוטובוס</label></td>
-				<td><input type="radio" id="radio3" name="contract_type" value="tsover"><label id="lradio3" for="radio3">ערך צבור</label></td>
+    <div id="editDialog"> </div>
+	<div id="addContractDialog">
+		<table id="contractTypeTable">
+			<tr id="contractTypeRadioButton">
+				<td><input type="radio" id="radio1" name="contractTypeValue" value="rakevet"><label id="lradio1" for="radio1">רכבת</label></td>
+				<td><input type="radio" id="radio2" name="contractTypeValue" value="bus"><label id="lradio2" for="radio2">אוטובוס</label></td>
+				<td><input type="radio" id="radio3" name="contractTypeValue" value="tsover"><label id="lradio3" for="radio3">ערך צבור</label></td>
 			</tr>
 		</table>
-		<table id="options_table">
-			<tr id="rakevet_form_a" style="display:none">
+		<table id="optionsTable">
+			<tr id="trainComboSrc" style="display:none">
 				<td>
-					<select id="rakevet_src">
+					<select id="trainValueSrc">
 					<option selected="selected" value="">בחר תחנה</option>
 					<option value="5800">אשדוד עד הלום</option>
 					<option value="5900">אשקלון</option>
@@ -119,9 +122,9 @@
 				<td>:מוצא</td>
 				
 			</tr>
-			<tr id="rakevet_form_b" style="display:none">
+			<tr id="trainComboDest" style="display:none">
 				<td>
-					<select id="rakevet_dest">
+					<select id="trainValueDest">
 					<option selected="selected" value="">בחר תחנה</option>
 					<option value="5800">אשדוד עד הלום</option>
 					<option value="5900">אשקלון</option>
@@ -181,20 +184,20 @@
 				</td>
 				<td >:יעד</td>
 			</tr>
-			<tr id="div_type">
+			<tr id="typeTR">
 				<td>
-					<select id="selectmenu" style="wdith:100%">
+					<select id="typeSelectMenu" style="wdith:100%">
 					<option selected="selected">כרטיסיה</option>
 					<option >חופשי-חודשי</option>
 					</select>
 				</td>
 				<td >:סוג</td>
 			</tr>
-			<tr id="div_val">
+			<tr id="valueTR">
 				<td>
-					<input type="number" id="val_val"/> <input type="date" id="val_date"/>
+					<input type="number" id="valueNumInput"/> <input type="date" id="valueDateInput"/>
 				</td>
-				<td> <div id="lbl_val"></div> </td>
+				<td> <div id="valueLabel"></div> </td>
 			</tr>
 		</table>
 	</div>	
