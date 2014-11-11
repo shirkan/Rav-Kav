@@ -1,10 +1,10 @@
 #Last build type
-#Tue, 11 Nov 2014 16:50:07 +0200
+#Tue, 11 Nov 2014 17:22:09 +0200
 
-build.last.target=debug
+build.last.target=release
 
 build.last.is.instrumented=false
 
-build.last.is.packaging.debug=true
+build.last.is.packaging.debug=false
 
-build.last.is.signing.debug=true
+build.last.is.signing.debug=false

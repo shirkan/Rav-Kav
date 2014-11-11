@@ -28,7 +28,6 @@
 		36B42D3A5D7546DD9575071D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C12BC0A7DB4539B0939185 /* EventKit.framework */; };
 		49F9248246064B02A349726C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D668FDB3C3C7469A863A8650 /* AVFoundation.framework */; };
 		4C4FCDCAC76C4EAF9700716E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 013FD21C54E14A3AA8C4994F /* CDVDevice.m */; };
-		54D9381A8CEB405580ECE11B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0343E97347A4C438B0A4BCC /* StoreKit.framework */; };
 		583C55ACDEC74151AB397145 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36CB71ABD4402982A1B7B0 /* CDVInAppBrowser.m */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7AD54D1146C444A0AAB31161 /* CDVAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A6FC220AFB4616B6A4E62F /* CDVAdMob.m */; };
@@ -45,6 +44,7 @@
 		88EF8D3FD927402489A60D53 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAE5A7BF3E46E3AAC28A85 /* CDVStatusBar.m */; };
 		AD96113BDD2743269A672397 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2033C7E894F4BF3AF6E7DB1 /* CDVNotification.bundle */; };
 		AEE017352A0F452BA645210A /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0377539C162941EDB1E7CAC0 /* EventKitUI.framework */; };
+		B9E660581A125E2400DD89CA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E660571A125E2400DD89CA /* StoreKit.framework */; };
 		BB3AB16B96644A48A8A0AA40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7CAF0ABCD714EE98C402B1D /* Foundation.framework */; };
 		BE30A613A39441699020CF8F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2582872EFF5440C4A94DC2AE /* CoreTelephony.framework */; };
 		BFFF99E779DC4A3B9C4D1794 /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5ECF1DEC5641DEBB2170F1 /* CDVVibration.m */; };
@@ -139,10 +139,10 @@
 		9B36CB71ABD4402982A1B7B0 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowser.m; path = org.apache.cordova.inappbrowser/CDVInAppBrowser.m; sourceTree = "<group>"; };
 		9BF38FABAFC34EA3B20252DA /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADAdNetworkExtras.h; path = "com.google.admobsdk-ios/GADAdNetworkExtras.h"; sourceTree = "<group>"; };
 		9DAACD061A584E008987E364 /* GADInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInAppPurchase.h; path = "com.google.admobsdk-ios/GADInAppPurchase.h"; sourceTree = "<group>"; };
-		A0343E97347A4C438B0A4BCC /* StoreKit.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A0D19590B7D44A84BE555A96 /* GADInAppPurchaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInAppPurchaseDelegate.h; path = "com.google.admobsdk-ios/GADInAppPurchaseDelegate.h"; sourceTree = "<group>"; };
 		B05B4B053A06481EB2420AA0 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInterstitialDelegate.h; path = "com.google.admobsdk-ios/GADInterstitialDelegate.h"; sourceTree = "<group>"; };
 		B6B9C897CC9743F3B77FF05E /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInterstitial.h; path = "com.google.admobsdk-ios/GADInterstitial.h"; sourceTree = "<group>"; };
+		B9E660571A125E2400DD89CA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA1651BC35854CF9BD63EA34 /* AdSupport.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C2033C7E894F4BF3AF6E7DB1 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
 		D178F537E16A4456AD496B08 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADBannerView.h; path = "com.google.admobsdk-ios/GADBannerView.h"; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				B9E660581A125E2400DD89CA /* StoreKit.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				DE2E0F6B2D0A4C759015CD36 /* libGoogleAdMobAds.a in Frameworks */,
 				D3125D944EC342B2B1966676 /* AdSupport.framework in Frameworks */,
@@ -176,7 +177,6 @@
 				AEE017352A0F452BA645210A /* EventKitUI.framework in Frameworks */,
 				BB3AB16B96644A48A8A0AA40 /* Foundation.framework in Frameworks */,
 				EAD3ACD498354485B35A041C /* MessageUI.framework in Frameworks */,
-				54D9381A8CEB405580ECE11B /* StoreKit.framework in Frameworks */,
 				F6D41452932A491F9AF5B229 /* SystemConfiguration.framework in Frameworks */,
 				D2A1FBB496AC426D8F01BC66 /* UIKit.framework in Frameworks */,
 			);
@@ -269,6 +269,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9E660571A125E2400DD89CA /* StoreKit.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
@@ -281,7 +282,6 @@
 				0377539C162941EDB1E7CAC0 /* EventKitUI.framework */,
 				F7CAF0ABCD714EE98C402B1D /* Foundation.framework */,
 				EFE158FE5CEA40669AE77B98 /* MessageUI.framework */,
-				A0343E97347A4C438B0A4BCC /* StoreKit.framework */,
 				28170A5C059E40A68768BEE5 /* SystemConfiguration.framework */,
 				4AAD9D045DBD49B9881B2BA8 /* UIKit.framework */,
 			);
@@ -420,6 +420,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 3CNE84BWM7;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
