@@ -38,22 +38,24 @@ const txtTrain = "rakevet";
 const txtBus = "bus";
 
 //	Aliasing
+const $outerDiv = $('#outerDiv');
+const $iosStatusBar = $('#iosStatusBar');
 const $contractsCanvas = $('#contractsCanvas');
 const $addContractButton = $('#addContractButton');
 const $addContractButtonBG = $('#addContractButtonBG');
+const $addContractDialog = $( "#addContractDialog" );
 const $typeTR = $("#typeTR");
 const $valueTR = $("#valueTR");
 const $valueNumInput = $('#valueNumInput');
 const $valueDateInput = $('#valueDateInput');
 const $typeSelectMenu = $("#typeSelectMenu").selectmenu();
 const $valueLabel = $("#valueLabel");
-const $addContractDialog = $( "#addContractDialog" );
 const $contractTypeRadioButton = $("#contractTypeRadioButton");
-const $outerDiv = $('#outerDiv');
-const $iosStatusBar = $('#iosStatusBar');
 const $trainComboSrc = $('#trainComboSrc');
 const $trainComboDest = $('#trainComboDest');
 const $editDialog = $('#editDialog');
+const $aboutButton = $('#about');
+const $aboutDialog = $('#aboutDialog');
 
 /* Rav-Kav functions*/
 
@@ -292,6 +294,7 @@ function editDialog( id ) {
 			{
 				text: "מחק חוזה",
 				style: "float:right",
+				width: "50%",
 				click: function() {
 					removeContract(id, key);
 					$( this ).dialog( "close" );
@@ -300,6 +303,7 @@ function editDialog( id ) {
 			{ 
 				text: "סיים עריכה",
 				style: "float:left",
+				width: "50%",
 				click: function() {
 
 					if (type == txtAccumulativeSum) {
@@ -443,25 +447,72 @@ function closeEditDialog() {
 	document.removeEventListener("backbutton", closeEditDialog, false);
 }
 
+//	About Dialog
+function aboutDialog() {
+	
+	$aboutDialog.dialog("open");
+
+	// register Android back button
+	document.addEventListener("backbutton", closeAboutDialog, false);
+}
+
+function closeAboutDialog() {
+	$aboutDialog.dialog("close")
+	document.removeEventListener("backbutton", closeAboutDialog, false);
+}
+
 $(document).ready( function () {
 
 	// showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
 	// showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
-
-	//	Init & reset values 
-	$contractsCanvas.text(txtNoContracts);
-	initContracts();
 
 	//	Disable statusbar on iOS
 	if (!isiOS()) {
 		$iosStatusBar.hide();
 	}
 
+	//	Contracts canvas
 	var contractsHeight = (($(window).height() - $outerDiv.height()) * adMobBannerPct);
-	console.log ("window height is " + $(window).height() + " and contracts is " + contractsHeight);
-    
-    // Contracts
+	console.log ("window height is " + $(window).height() + " outerdiv is " + $outerDiv.height() + " and contracts is " + contractsHeight);
     $contractsCanvas.height( contractsHeight + "px");
+    $contractsCanvas.text(txtNoContracts);
+	initContracts();
+
+    // alert("window height is " + $(window).height())
+    // alert("outerdiv is " + $outerDiv.height())
+    // alert("contracts " + contractsHeight)
+    // alert("real contracts " + $contractsCanvas.height())
+
+    //	About button
+    $aboutButton.bind("mousedown touchstart", function() {
+		$aboutButton.css({'color':'white', 'background-color':'black', 'border-color': 'white'});
+	});
+
+    $aboutButton.bind("mouseup touchend", function() {
+		$aboutButton.css({'color':'black', 'background-color':'white', 'border-color': 'black'});
+		aboutDialog();
+		// register Android back button
+		document.addEventListener("backbutton", closeAboutDialog, false);
+		event.preventDefault();
+	});
+
+	$aboutDialog.dialog({
+		dialogClass: "no-close",
+		autoOpen: false,
+		draggable: false,
+		modal: true,
+		title: "אודות",
+		width: "auto",
+		buttons: [
+			{
+				text: "סגור",
+				width: "100%",
+				click: function() {
+					closeAboutDialog();
+				}
+			}
+		]
+	});
 
     //	Add contract button logic
     $addContractButton.bind("mousedown touchstart", function() {

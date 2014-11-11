@@ -35,6 +35,13 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -45,6 +52,7 @@ module.exports.metadata =
     "org.apache.cordova.statusbar": "0.1.8",
     "org.apache.cordova.dialogs": "0.2.10",
     "org.apache.cordova.vibration": "0.3.11",
+    "org.apache.cordova.inappbrowser": "0.5.3",
     "com.google.admobsdk-ios": "6.12.0"
 }
 // BOTTOM OF METADATA

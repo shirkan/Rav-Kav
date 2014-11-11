@@ -13,7 +13,7 @@
 	function dateInXDays (date, x) {
 		date = (date == '') ? new Date() : date
 
-		var result = new Date()
+		var result = new Date(date)
 		result.setDate(date.getDate() + x)
 
 		return result

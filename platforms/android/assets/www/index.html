@@ -12,12 +12,13 @@
         <script type="text/javascript" src='js/floating-1.12.js'></script>
         <script type="text/javascript" src='js/jquery.mobile.min.js'></script>
         <script type="text/javascript" src='js/jquery-ui.min.js'></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        
-        <script type='text/javascript' src='js/utilities.js'></script>
-        <script type='text/javascript' src='js/phonegap-utilities.js'></script>
-        <script type='text/javascript' src='js/admob.js'></script>
-        <script type='text/javascript' src='js/ravkav.js'></script>
+        <script type="text/javascript" src='cordova.js'></script>
+
+        <!-- Load my js -->
+	    <script type='text/javascript' src='js/utilities.js'></script>
+	    <script type='text/javascript' src='js/phonegap-utilities.js'></script>
+	    <script type='text/javascript' src='js/admob.js'></script>
+	    
         <link rel='stylesheet' type='text/css' href='css/jquery-ui.css'/>
         <link rel='stylesheet' type='text/css' href='css/stylesheet.css'/>
 
@@ -44,12 +45,20 @@
 					    </div>
 					</td></tr>
 				</table>
+				<div id="about">?</div>
 			</div>
 		</div>
 	</body>	  
 
     <!-- Add contract floating menu -->
     <div id="editDialog"> </div>
+    <div id="aboutDialog"> 
+    	<p>אפליקציית רב-קו</p>
+    	<p>גירסא 1.2</p>
+    	<p>נכתבה ע״י לירן כהן</p>
+    	<a href="#" onclick="window.open('mailto:gshirkan@gmail.com?subject=Rav-Kav application contact', '_system', 'location=yes')" style="outline:none">gshirkan@gmail.com</a>
+    	<p></p>
+    </div>
 	<div id="addContractDialog">
 		<table id="contractTypeTable">
 			<tr id="contractTypeRadioButton">
@@ -201,4 +210,6 @@
 			</tr>
 		</table>
 	</div>	
+	<script type='text/javascript' src='js/ravkav.js'></script>
+	
 </html>

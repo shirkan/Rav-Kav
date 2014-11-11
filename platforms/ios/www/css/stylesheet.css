@@ -3,10 +3,6 @@ body {
 	font-family: Arial;
 }
 
-#outerDiv {
-	height: 100% !important;
-}
-
 h3, h4 {
 	color: white;
 }
@@ -14,6 +10,15 @@ h3, h4 {
 div {
 	color: white;
 	background-color: black;
+}
+
+table, td, tr, table tr, table tr td, table * {
+	margin: 3px;
+	/*border: solid white 1px;*/
+}
+
+#outerDiv {
+	height: 100% !important;
 }
 
 #bodyDiv {
@@ -26,6 +31,20 @@ div {
 	border-style: solid;
 	margin: 3px 3px 3px 3px;
 	position: relative;
+}
+
+#about {
+	position: absolute;
+	color: black;
+	background-color: white;
+	border-radius: 10px;
+	top: 3%;
+	left: 92%;
+	width: 18px;
+}
+
+#aboutDialog {
+	text-align: center;
 }
 
 #addContractButtonBG {
@@ -79,12 +98,8 @@ div {
 	font-size: small;
 }
 
-/*#tsover_widgets, #tsover_widgets * {
-	margin: auto;
-}*/
-
 #contractEditLabel {
-	font-size: medium;
+	font-size: small;
 	margin: auto;
 	text-align: center
 }
@@ -100,6 +115,7 @@ div {
 .ui-dialog-titlebar{
 	text-align: center;
 	text-decoration: underline;
+	font-weight: bold;
 }
 
 .ui-dialog {
@@ -126,7 +142,7 @@ div {
 	border: white solid 2px;
 	border-radius: 6px;
 	padding: none;
-	font-size: medium;
+	font-size: small;
 }
 
 .ui-buttonset, .ui-buttonset .ui-button {
@@ -195,9 +211,4 @@ select {
 
 #addContractDialog * td {
 	text-align:right;
-}
-
-table , td, tr, table tr, table tr td, table * {
-	margin: 3px;
-	/*border: solid white 1px;*/
 }

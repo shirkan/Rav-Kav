@@ -14,7 +14,7 @@ function initApp() {
     initAd();
 
     // display the banner at startup
-    if (window.plugins && window.plugins.Admob) {
+    if (window.plugins && window.plugins.AdMob) {
     	window.plugins.AdMob.createBannerView();
     }
 }
