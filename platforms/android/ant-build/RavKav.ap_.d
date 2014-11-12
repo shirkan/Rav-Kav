@@ -57,7 +57,6 @@
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/css/jquery-ui.css \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/css/jquery-ui.min.css \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/css/stylesheet.css \
-/Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/img/logo.png \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/js/admob.js \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/js/floating-1.12.js \
 /Users/shirkan/GitHub/Rav-Kav/platforms/android/assets/www/js/index.js \

@@ -292,18 +292,18 @@ function editDialog( id ) {
 		title: "עריכת חוזה",
 		buttons: [
 			{
-				text: "מחק חוזה",
+				text: "מחק",
 				style: "float:right",
-				width: "50%",
+				width: "33%",
 				click: function() {
 					removeContract(id, key);
-					$( this ).dialog( "close" );
+					closeEditDialog();
 				}
 			},
 			{ 
-				text: "סיים עריכה",
-				style: "float:left",
-				width: "50%",
+				text: "עדכן",
+				style: "float:right",
+				width: "33%",
 				click: function() {
 
 					if (type == txtAccumulativeSum) {
@@ -377,6 +377,14 @@ function editDialog( id ) {
 						}
 					}
 					closeEditDialog()
+				}
+			},
+				{
+				text: "בטל",
+				style: "float:left",
+				width: "33%",
+				click: function() {
+					closeEditDialog();
 				}
 			}
 		]
