@@ -1,8 +1,8 @@
 # Rav Kav #
 ###########
-hooks
-platforms
-plugins
+hooks/*
+platforms/*
+plugins/*
 shirkan.keystore
 
 # OS generated files #
