@@ -1,9 +1,9 @@
 # Rav Kav #
 ###########
-/Users/shirkan/GitHub/Rav-Kav/hooks
-/Users/shirkan/GitHub/Rav-Kav/platforms
-/Users/shirkan/GitHub/Rav-Kav/plugins
-/Users/shirkan/GitHub/Rav-Kav/shirkan.keystore
+hooks
+platforms
+plugins
+shirkan.keystore
 
 # OS generated files #
 ######################
