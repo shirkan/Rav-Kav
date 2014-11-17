@@ -1,0 +1,17 @@
+# Rav Kav #
+###########
+/Users/shirkan/GitHub/Rav-Kav/hooks
+/Users/shirkan/GitHub/Rav-Kav/platforms
+/Users/shirkan/GitHub/Rav-Kav/plugins
+/Users/shirkan/GitHub/Rav-Kav/shirkan.keystore
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
