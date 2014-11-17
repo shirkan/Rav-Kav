@@ -4,6 +4,7 @@ hooks/*
 platforms/*
 plugins/*
 shirkan.keystore
+info.txt
 
 # OS generated files #
 ######################
