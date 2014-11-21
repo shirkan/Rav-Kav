@@ -119,7 +119,7 @@ function addContractAccumulativeSum( id, val ) {
 		$contractsCanvas.text(txtTouchContract);
 	}
 
-	$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtAccumulativeSumHe + " בסך " + val +"</button></div>");
+	$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtAccumulativeSumHe + " בסך " + val +" ש\"ח</button></div>");
 
 	var e = document.getElementById("btnContract" + id);
 	e.onclick = function () { editDialog(id) };
@@ -204,7 +204,7 @@ function validateBus () {
 function validateAccumulativeSum() {
 	var val = $valueNumInput.val();
 	if (!isNaN(parseFloat(val)) && isFinite(val) && (parseFloat(val) > 0)) {
-		val = parseFloat(val).toFixed(1)
+		val = parseFloat(val).toFixed(2)
 		$valueNumInput.val(val);
 		return val;
 	}
@@ -226,22 +226,30 @@ function validateValue () {
 			break;
 		case txt30DaysPass:
 			{
-				 $valueDateInput.datepicker('option', 'dateFormat', 'mm/dd/yy');
+				$valueDateInput.datepicker('option', 'dateFormat', 'mm/dd/yy');
 				var txtDate =  $valueDateInput.val();
-				var date = new Date(txtDate);
+				var beginDate = new Date(txtDate);
+				var endDate = new Date(dateInXDays(beginDate, 30));
+				
 				var today = new Date();
 				var yesterday = dateInXDays(today, -1);
 
+				var begin = dateWithDelim(beginDate, "dmy", "/");
+				var end = dateWithDelim(endDate, "dmy", "/");
+
 				//	"date" is set to 00:00:00 while today is with actual time.
 				//	This is why we compare it with "yesterday" 
-				if (date == "Invalid Date" || date < yesterday ) {
-					console.log("Invalid date! " + date)
+				if ( beginDate == "Invalid Date" ) {
+					console.log("Invalid date! " + beginDate)
+					return null;
+				}
+
+				if ( endDate < yesterday ) {
+					// showMessage("alert", "תאריך לא חוקי", "תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר", "", "");
+					alert("תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר");
 					return null;
 				}
 				
-				var begin = dateWithDelim(date, "dmy", "/");
-				var end = dateWithDelim(dateInXDays(date, 30), "dmy", "/");
-
 				return [txt30DaysPass, begin, end];
 			}
 			break;
@@ -342,26 +350,30 @@ function editDialog( id ) {
 								$('#contractEditDate').datepicker('option', 'dateFormat', 'mm/dd/yy');
 								var txtDate = $('#contractEditDate').val();
 								
-								var date = new Date(txtDate);
+								var beginDate = new Date(txtDate);
 								var today = new Date();
 								var yesterday = dateInXDays(today, -1);
 
-								if (date == "Invalid Date") {
-									console.log("Invalid date! " + date)
+								if (beginDate == "Invalid Date") {
+									console.log("Invalid date! " + beginDate)
 
 									// 	Stop processing, quit dialog
 									closeEditDialog()
 								}
 
-								var begin = dateWithDelim(date, "dmy", "/");
-								date = dateInXDays(date, 30)
+								var begin = dateWithDelim(beginDate, "dmy", "/");
+								var endDate = dateInXDays(beginDate, 30);
+								var end = dateWithDelim(endDate, 'dmy', "/");
 								
 								//	"date" is set to 00:00:00 while today is with actual time.
 								//	This is why we compare it with "yesterday"
-								if (date < yesterday) {
-									removeContract(id, key);
+								if (endDate < yesterday) {
+									// showMessage("alert", "תאריך לא חוקי", "תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את החוזה", "", "");
+									alert("תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את החוזה");
+									return;
+
 								} else {
-									var end = dateWithDelim(date, 'dmy', "/");
+									
 									if (type == txtBus) {
 										raw[2] = begin;
 										raw[3] = end;	
@@ -399,11 +411,11 @@ function editDialog( id ) {
 			} else {
 				data = parseFloat(data) - parseFloat(num);
 			}
-			data = data.toFixed(1);
-			$('#contractEditLabel').text(data +" :ערך נוכחי");
+			data = data.toFixed(2);
+			$('#contractEditLabel').text("ערך נוכחי: " + data + " ש\"ח");
 		}
 
-		$editDialog.append("<table id='contractEditDiv'><td><div id='contractEditLabel'>" + data +" :ערך נוכחי</div></td><tr><td><table><td><button id='dec' style='font-size:small'>הפחת</button></td><td><input type='number' id='contractEditValue' style='width:50px'/ value=0.0></td><td><button id='inc' style='font-size:small'>הוסף</button></td></table></td></tr></table>");
+		$editDialog.append("<table id='contractEditDiv'><td><div id='contractEditLabel'>ערך נוכחי: " + data +" ש\"ח </div></td><tr><td><table><td><button id='dec' style='font-size:small'>הפחת</button></td><td><input type='number' id='contractEditValue' style='width:50px'/ value=0.00></td><td><button id='inc' style='font-size:small'>הוסף</button></td></table></td></tr></table>");
 		document.getElementById('dec').onclick = function () {changeAccumulativeSum("dec") };
 		document.getElementById('inc').onclick = function () {changeAccumulativeSum("inc") };
 	} else {
