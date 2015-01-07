@@ -28,8 +28,8 @@ const txtSum = ":הכנס סכום";
 const txtTab = "כרטיסיה";
 const txt30DaysPass = "חופשי-חודשי"
 const txtNoStation = "בחר תחנה";
-const txtTouchContract = "לחץ על חוזה לעריכה";
-const txtNoContracts = "לא קיימים חוזים";
+const txtTouchContract = "לחץ על הסדר נסיעה לעריכה";
+const txtNoContracts = "לא קיימים הסדרי נסיעה";
 const txtAccumulativeSumHe = "ערך צבור";
 const txtTrainHe = "רכבת";
 const txtBusHe = "אוטובוס";
@@ -119,7 +119,7 @@ function addContractAccumulativeSum( id, val ) {
 		$contractsCanvas.text(txtTouchContract);
 	}
 
-	$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtAccumulativeSumHe + " בסך " + val +" ש\"ח</button></div>");
+	$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtAccumulativeSumHe + " בסך <a style='color:lightskyblue'>" + val +"</a> ש\"ח</button></div>");
 
 	var e = document.getElementById("btnContract" + id);
 	e.onclick = function () { editDialog(id) };
@@ -141,23 +141,23 @@ function addContractBusTrain( id, type, data ) {
 		if (contractType == txtTab) {
 			//	Train, Tab
 			var val = data[3];
-			$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtTrainHe + " מתחנת " + src + " לתחנת " + dest + " עם " + val +" נסיעות</button></div>");
+			$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtTrainHe + " מתחנת <a style='color:lightgreen'>" + src + "</a> לתחנת <a style='color:lightgreen'>" + dest + "</a> עם <a style='color:lightskyblue'>" + val +"</a> נסיעות</button></div>");
 		} else {
 			//	Train, 30-days-pass
 			var from = data[3];
 			var to = data[4];
-			$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtTrainHe + " מתחנת " + src + " לתחנת " + dest + " מתאריך " + from +" עד " + to+ "</button></div>");
+			$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtTrainHe + " מתחנת <a style='color:lightgreen'>" + src + "</a> לתחנת <a style='color:lightgreen'>" + dest + "<a> מתאריך <a style='color:lightskyblue'>" + from +"</a> עד <a style='color:lightskyblue'>" + to+ "</a></button></div>");
 		}
     } else {
     	//	Bus
     	if (contractType == txtTab) {
     		//	Bus, Tab
-    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtBusHe + " עם " + val +" נסיעות</button></div>");
+    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtBusHe + " עם <a style='color:lightskyblue'>" + val +"</a> נסיעות</button></div>");
     	} else {
     		//	Bus, 30-days-pass
     		var from = val[0];
     		var to = val[1];
-    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtBusHe + " מתאריך " + from +" עד " + to+ "</button></div>");
+    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtBusHe + " מתאריך <a style='color:lightskyblue'>" + from +"</a> עד <a style='color:lightskyblue'>" + to+ "</a></button></div>");
     	}
     }
 
@@ -245,8 +245,8 @@ function validateValue () {
 				}
 
 				if ( endDate < yesterday ) {
-					// showMessage("alert", "תאריך לא חוקי", "תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר", "", "");
-					alert("תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר");
+					// showMessage("alert", "תאריך לא חוקי", "תוקף הסדר הנסיעה שהזנת " + end + " פג, אנא בחר תוקף אחר", "", "");
+					alert("תוקף הסדר הנסיעה שהזנת " + end + " פג, אנא בחר תוקף אחר");
 					return null;
 				}
 				
@@ -297,7 +297,7 @@ function editDialog( id ) {
 		modal: true,
 		width: "auto",
 		"min-height": "inherit",
-		title: "עריכת חוזה",
+		title: "עריכת הסדר נסיעה",
 		buttons: [
 			{
 				text: "מחק",
@@ -368,8 +368,8 @@ function editDialog( id ) {
 								//	"date" is set to 00:00:00 while today is with actual time.
 								//	This is why we compare it with "yesterday"
 								if (endDate < yesterday) {
-									// showMessage("alert", "תאריך לא חוקי", "תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את החוזה", "", "");
-									alert("תוקף החוזה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את החוזה");
+									// showMessage("alert", "תאריך לא חוקי", "תוקף הסדר הנסיעה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את ההסדר", "", "");
+									alert("תוקף הסדר הנסיעה שהזנת " + end + " פג, אנא בחר תוקף אחר או מחק את ההסדר");
 									return;
 
 								} else {
@@ -574,7 +574,7 @@ $(document).ready( function () {
 		autoOpen: false,
 		draggable: false,
 		modal: true,
-		title: "הוספת חוזה חדש",
+		title: "הוספת הסדר נסיעה חדש",
 		width: "auto",
 		buttons: [
 			{
