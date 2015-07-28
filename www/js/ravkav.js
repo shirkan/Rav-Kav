@@ -10,6 +10,10 @@
 // Global variables
 var numContracts = ( localStorage.numContracts ? localStorage.numContracts : 0);
 var contractID = ( localStorage.contractID ? localStorage.contractID : 0);
+var busDescriptions = {};
+if (localStorage.busDescriptions) {
+	busDescriptions = JSON.parse(localStorage.busDescriptions);
+}
 
 // Numeric value constants
 const contractsGap = 150;
@@ -56,6 +60,8 @@ const $trainComboDest = $('#trainComboDest');
 const $editDialog = $('#editDialog');
 const $aboutButton = $('#about');
 const $aboutDialog = $('#aboutDialog');
+const $description = $('#description')
+const $descriptionInput = $('#descriptionInput')
 
 /* Rav-Kav functions*/
 
@@ -66,7 +72,7 @@ function saveData ( type, data ) {
 	var key = "_" + currentID;
 	var val = type + "_" + data;
 	localStorage.setItem(key, val);
-	
+
 	contractID++;
 	localStorage.contractID = contractID;
 
@@ -152,12 +158,15 @@ function addContractBusTrain( id, type, data ) {
     	//	Bus
     	if (contractType == txtTab) {
     		//	Bus, Tab
-    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtBusHe + " עם <a style='color:lightskyblue'>" + val +"</a> נסיעות</button></div>");
+    		var drives = val[0];
+    		var name = val.slice(1, val.length).join("_");
+    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txtTab + " ל" + txtBusHe + " (<a style='color:lightgreen'>" + name + "</a>) עם <a style='color:lightskyblue'>" + drives +"</a> נסיעות</button></div>");
     	} else {
     		//	Bus, 30-days-pass
     		var from = val[0];
     		var to = val[1];
-    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtBusHe + " מתאריך <a style='color:lightskyblue'>" + from +"</a> עד <a style='color:lightskyblue'>" + to+ "</a></button></div>");
+    		var name = val.slice(2, val.length).join("_");
+    		$contractsCanvas.append("<div id='contract"+ id + "'><p></p><button id='btnContract" + id + "'>" + txt30DaysPass + " ל" + txtBusHe +  " (<a style='color:lightgreen'>" + name + "</a>) מתאריך <a style='color:lightskyblue'>" + from + "</a> עד <a style='color:lightskyblue'>" + to + "</a></button></div>");
     	}
     }
 
@@ -196,8 +205,16 @@ function validateTrain() {
 
 // Bus validation
 function validateBus () {
-	//	validate value 
-	return validateValue();
+	// 	validate description
+	var desc = validateDescription();
+	if (!desc) return null;
+
+	//	validate value
+	var val = validateValue();
+	if (!val) return null;
+
+	val.push(desc);
+	return val;
 }
 
 // AccumulativeSum validation
@@ -221,6 +238,8 @@ function validateValue () {
 				val = parseInt(val);
 				if (!isNaN(val) && isFinite(val) && (val > 0)) {
 		    		return [txtTab, val];
+		    	} else {
+		    		alert("הכנס ערך מספרי");
 		    	}
 			}
 			break;
@@ -230,7 +249,7 @@ function validateValue () {
 				var txtDate =  $valueDateInput.val();
 				var beginDate = new Date(txtDate);
 				var endDate = new Date(dateInXDays(beginDate, 30));
-				
+
 				var today = new Date();
 				var yesterday = dateInXDays(today, -1);
 
@@ -249,7 +268,7 @@ function validateValue () {
 					alert("תוקף הסדר הנסיעה שהזנת " + end + " פג, אנא בחר תוקף אחר");
 					return null;
 				}
-				
+
 				return [txt30DaysPass, begin, end];
 			}
 			break;
@@ -257,6 +276,15 @@ function validateValue () {
 			return null;
 	}
 	return null;
+}
+
+function validateDescription () {
+	var val = $descriptionInput.val();
+	if (val.length == 0) {
+		alert("הכנס תיאור")
+		return null;
+	}
+	return val;
 }
 
 //	Edit dialog invokation
@@ -277,7 +305,7 @@ function editDialog( id ) {
 	function removeContract ( id, key ) {
 		//	Remove from canvas
 		$('#contract' + id).remove();
-		
+
 		//	Remove from localStorage
 		localStorage.removeItem(key);
 
@@ -308,7 +336,7 @@ function editDialog( id ) {
 					closeEditDialog();
 				}
 			},
-			{ 
+			{
 				text: "עדכן",
 				style: "float:right",
 				width: "33%",
@@ -349,7 +377,7 @@ function editDialog( id ) {
 
 								$('#contractEditDate').datepicker('option', 'dateFormat', 'mm/dd/yy');
 								var txtDate = $('#contractEditDate').val();
-								
+
 								var beginDate = new Date(txtDate);
 								var today = new Date();
 								var yesterday = dateInXDays(today, -1);
@@ -364,7 +392,7 @@ function editDialog( id ) {
 								var begin = dateWithDelim(beginDate, "dmy", "/");
 								var endDate = dateInXDays(beginDate, 30);
 								var end = dateWithDelim(endDate, 'dmy', "/");
-								
+
 								//	"date" is set to 00:00:00 while today is with actual time.
 								//	This is why we compare it with "yesterday"
 								if (endDate < yesterday) {
@@ -373,15 +401,15 @@ function editDialog( id ) {
 									return;
 
 								} else {
-									
+
 									if (type == txtBus) {
 										raw[2] = begin;
-										raw[3] = end;	
+										raw[3] = end;
 									} else {
 										raw[4] = begin;
-										raw[5] = end;	
+										raw[5] = end;
 									}
-									
+
 									localStorage.setItem(key, raw.join("_"));
 									initContracts();
 								}
@@ -422,8 +450,8 @@ function editDialog( id ) {
 		//	Type is Bus or Train
 		var minType = data[0];
 		if (minType == txtTab ) {
-			var val = data[data.length-1];
-			
+			var val = (type == "bus" ? data[1] : data[data.length-1]);
+
 			function changeVal ( param ) {
 				if ( (parseInt(val) + param) >= 0 ) {
 					val = parseInt(val) + param;
@@ -441,7 +469,7 @@ function editDialog( id ) {
 			} else {
 				var date = data[3];
 			}
-			
+
 			$editDialog.append("<div id='contractEditDiv' style='display:inline-block'><input type='date' id='contractEditDate' style='width:80px'/>"+ txtDate +"</div>");
 			if ( !(isiOS() || isAndroid())) {
 				$('#contractEditDate').prop('type','text');
@@ -449,7 +477,7 @@ function editDialog( id ) {
 			} else {
 				date = iOSAndroidDateFormat(date)
 			}
-		
+
 			$('#contractEditDate').datepicker('option', 'dateFormat', 'dd/mm/yy');
 			$('#contractEditDate').val(date);
 		}
@@ -469,7 +497,7 @@ function closeEditDialog() {
 
 //	About Dialog
 function aboutDialog() {
-	
+
 	$aboutDialog.dialog("open");
 
 	// register Android back button
@@ -484,7 +512,7 @@ function closeAboutDialog() {
 $(document).ready( function () {
 
 	// showMessage("alert", "welcome!", "welcoming", function (param) { console.log("returned " + param)}, ["ok" , "close"] );
-	// showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );	
+	// showMessage("confirm", "welcome confirm!", "welcoming confirm", function (param) { console.log("confirm returned " + param)}, ["ok" , "close"] );
 
 	//	Disable statusbar on iOS
 	if (!isiOS()) {
@@ -534,7 +562,7 @@ $(document).ready( function () {
 		$addContractButton.css({'color':'white', 'background-color':'black', 'border-color': 'white'});
 		$addContractButtonBG.css({'background-color':'black'});
 	});
-	
+
 	$addContractButton.bind("mouseup touchend", function() {
 		$addContractButton.css({'color':'black', 'background-color':'white', 'border-color': 'black'});
 		$addContractButtonBG.css({'background-color':'white'});
@@ -545,14 +573,42 @@ $(document).ready( function () {
 		event.preventDefault();
 	});
 
+    function showTrainForm ( trigger ) {
+		if (trigger) {
+			$trainComboSrc.show();
+			$trainComboDest.show();
+		} else {
+			$trainComboSrc.hide();
+			$trainComboDest.hide();
+		}
+	}
+
+	function showTypeSelection (trigger) {
+		if (trigger) {
+			$typeSelectMenu.show();
+			$typeTR.show();
+		} else {
+			$typeSelectMenu.hide();
+			$typeTR.hide();
+		}
+	}
+	function showDescription (trigger) {
+		if (trigger) {
+			$description.show();
+		} else {
+			$description.hide();
+		}
+	}
+
     //	Dialog handling
     function clearForm() {
     	clearContracType();
     	$valueNumInput.val(0);
-    	$trainComboSrc.hide();
-    	$trainComboDest.hide();
-    	$typeTR.hide();
+    	showTrainForm(false);
+    	showTypeSelection(false);
+    	showDescription(false);
     	$valueTR.hide();
+		$typeTR.hide();
     }
 
     function clearContracType ( ) {
@@ -620,7 +676,7 @@ $(document).ready( function () {
 					}
 
 					if (ok) {
-						closeDialog();	
+						closeDialog();
 					}
 				}
 			}
@@ -630,10 +686,9 @@ $(document).ready( function () {
 	//	Add Contract dialog initalization
 	$addContractDialog.hide();
 	$contractTypeRadioButton.buttonset();
+	clearForm();
 	$trainComboSrc.hide();
 	$trainComboDest.hide();
-	$valueTR.hide();
-	$typeTR.hide();
 	$valueDateInput.hide();
 
 	//	Setup date input according to OS
@@ -668,31 +723,11 @@ $(document).ready( function () {
 		if (isiOS() || isAndroid() ) {
 			$valueDateInput.val(todayFormatted);
 		} else {
-			$valueDateInput.val(todayNotFormatted);	
+			$valueDateInput.val(todayNotFormatted);
 		}
-		
+
 		// Display value modification widgets
 		$valueTR.show();
-
-		function showTrainForm ( trigger ) {
-			if (trigger) {
-				$trainComboSrc.show();
-				$trainComboDest.show();
-			} else {
-				$trainComboSrc.hide();
-				$trainComboDest.hide();
-			}
-		}
-
-		function showTypeSelection (trigger) {
-			if (trigger) {
-				$typeSelectMenu.show();
-				$typeTR.show();
-			} else {
-				$typeSelectMenu.hide();
-				$typeTR.hide();
-			}
-		}
 
 		function initWidgets( typeSelectMenuTxt, unitsVal) {
 			$valueLabel.text(typeSelectMenuTxt);
@@ -706,16 +741,19 @@ $(document).ready( function () {
 			case txtTrain:
 				showTrainForm(true);
 				showTypeSelection(true);
+				showDescription(false);
 				initWidgets(txtEntries, initTabTrain);
 				break;
 			case txtBus:
 				showTrainForm(false);
 				showTypeSelection(true);
+				showDescription(true);
 				initWidgets(txtEntries, initTabBus);
 				break;
 			case txtAccumulativeSum:
 				showTrainForm(false);
 				showTypeSelection(false);
+				showDescription(false);
 				initWidgets(txtSum, initAccumulativeSum);
 				break;
 		}
