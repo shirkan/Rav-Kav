@@ -10,10 +10,6 @@
 // Global variables
 var numContracts = ( localStorage.numContracts ? localStorage.numContracts : 0);
 var contractID = ( localStorage.contractID ? localStorage.contractID : 0);
-var busDescriptions = {};
-if (localStorage.busDescriptions) {
-	busDescriptions = JSON.parse(localStorage.busDescriptions);
-}
 
 // Numeric value constants
 const contractsGap = 150;
