@@ -5,6 +5,8 @@ platforms/*
 plugins/*
 shirkan.keystore
 info.txt
+res/*
+icons*/*
 
 # OS generated files #
 ######################
