@@ -19,7 +19,7 @@ const contractsGap = 150;
 const initTabBus = 15;
 const initTabTrain = 12;
 const initAccumulativeSum = 100;
-const adMobBannerPct = .83;
+const adMobBannerPct = .90;
 const todayFormatted = dateWithDelim("", "ymd", "-");
 const todayNotFormatted = dateWithDelim("", "dmy", "/");
 const before30days = dateInXDays("", -30);
@@ -519,7 +519,8 @@ $(document).ready( function () {
 	}
 
 	//	Contracts canvas
-	var contractsHeight = (($(window).height() - $outerDiv.height()) * adMobBannerPct);
+    var contractsHeight = (($(window).height() - $outerDiv.height()) * adMobBannerPct);
+	// var contractsHeight = (($(window).height() - $outerDiv.height()));
 	console.log ("window height is " + $(window).height() + " outerdiv is " + $outerDiv.height() + " and contracts is " + contractsHeight);
     $contractsCanvas.height( contractsHeight + "px");
     $contractsCanvas.text(txtNoContracts);
@@ -761,11 +762,11 @@ $(document).ready( function () {
 
 function openMail(subject) {
     if (isAndroid()) {
-        window.open('mailto:gshirkan@gmail.com?subject=Rav-Kav application contact (Android)', '_system', 'location=yes');
+        window.open('mailto:gshirkan@gmail.com?subject=Rav-Kav Pro application contact (Android)', '_system', 'location=yes');
     } else {
         cordova.plugins.email.open({
             to:      'gshirkan@gmail.com',
-            subject: 'Rav-Kav application contact (iOS)'}
+            subject: 'Rav-Kav Pro application contact (iOS)'}
         );
     }
 }
