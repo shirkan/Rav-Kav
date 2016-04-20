@@ -1,26 +1,39 @@
 /*
-	Admob utilities js by Liran Cohen 
+	Admob utilities js by Liran Cohen
 */
+var admobid = {};
 
 function onDocLoad() {
+
     if(( /(ipad|iphone|ipod|android)/i.test(navigator.userAgent) )) {
-        document.addEventListener('deviceready', initApp, false);
+        document.addEventListener('deviceready', startAds, false);
     } else {
-        initApp();
+        // alert
     }
 }
 
-function initApp() {
+function startAds() {
     initAd();
+    initApp();
+}
 
-    // display the banner at startup
-    if (window.plugins && window.plugins.AdMob) {
-    	window.plugins.AdMob.createBannerView();
+function initApp() {
+    // display the banner & interstitial at startup
+    if (AdMob) {
+    	if(AdMob) {
+            AdMob.createBanner( {
+                adId: admobid.banner,
+                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                autoShow: true }
+            );
+         AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:true} );
+         // AdMob.showInterstitial();
+        }
     }
 }
 
 function initAd(){
-    if ( window.plugins && window.plugins.AdMob ) {
+    if (AdMob) {
 	    var ad_units = {
 			ios : {
 				banner: 'ca-app-pub-5934662800023467/7913750488',
@@ -31,20 +44,10 @@ function initAd(){
 				interstitial: 'ca-app-pub-5934662800023467/9390483684'
 			}
 	    };
-        var admobid =  isAndroid() ? ad_units.android : ad_units.ios;
+        admobid =  isAndroid() ? ad_units.android : ad_units.ios;
 
-        window.plugins.AdMob.setOptions( {
-            publisherId: admobid.banner,
-            interstitialAdId: admobid.interstitial,
-            bannerAtTop: false, // set to true, to put banner at top
-            overlap: false, // set to true, to allow banner overlap webview
-            offsetTopBar: false, // set to true to avoid ios7 status bar overlap
-            isTesting: false, // receiving test ad
-            autoShow: true // auto show interstitial ad when loaded
-        });
+        // registerAdEvents();
 
-        registerAdEvents();
-        
     } else {
     	//	Only notify when using mobile device
     	if(( /(ipad|iphone|ipod|android)/i.test(navigator.userAgent) )) {
@@ -53,14 +56,19 @@ function initAd(){
     }
 }
 
+document.addEventListener('onAdFailLoad', function(e){
+    // handle the event
+    setTimeout(initApp, 3000);
+});
+
 // Optional, in case respond to events
-function registerAdEvents() {
-	document.addEventListener('onReceiveAd', function(){});
-    document.addEventListener('onFailedToReceiveAd', function(data){});
-    document.addEventListener('onPresentAd', function(){});
-    document.addEventListener('onDismissAd', function(){ });
-    document.addEventListener('onLeaveToAd', function(){ });
-    document.addEventListener('onReceiveInterstitialAd', function(){ });
-    document.addEventListener('onPresentInterstitialAd', function(){ });
-    document.addEventListener('onDismissInterstitialAd', function(){ });
-}
+// function registerAdEvents() {
+// 	document.addEventListener('onReceiveAd', function(){});
+//     document.addEventListener('onFailedToReceiveAd', function(data){});
+//     document.addEventListener('onPresentAd', function(){});
+//     document.addEventListener('onDismissAd', function(){ });
+//     document.addEventListener('onLeaveToAd', function(){ });
+//     document.addEventListener('onReceiveInterstitialAd', function(){ });
+//     document.addEventListener('onPresentInterstitialAd', function(){ });
+//     document.addEventListener('onDismissInterstitialAd', function(){ });
+// }

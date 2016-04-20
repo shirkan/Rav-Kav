@@ -7,7 +7,7 @@
     <author email="gshirkan@gmail.com">
         Liran Cohen
     </author>
-    <content src="index_pro.html" />
+    <content src="res/index_pro.html" />
     <access origin="*" />
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />

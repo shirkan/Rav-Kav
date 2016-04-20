@@ -2,9 +2,12 @@
 ###########
 hooks/*
 platforms/*
-plugins/*
+plugins*
 shirkan.keystore
 info.txt
+res*
+icon*
+keystore*
 
 # OS generated files #
 ######################
@@ -16,3 +19,11 @@ info.txt
 ehthumbs.db
 Thumbs.db
 
+
+*.png
+
+512.png
+
+1024.png
+
+1024 x 1024.jpg

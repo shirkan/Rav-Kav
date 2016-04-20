@@ -1,0 +1,3 @@
+cp -rf config_free.xml config.xml
+cordova plugin add cordova-plugin-admobpro
+cordova build --release
