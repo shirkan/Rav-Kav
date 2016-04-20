@@ -5,19 +5,11 @@ platforms/*
 plugins*
 shirkan.keystore
 info.txt
-<<<<<<< HEAD
-<<<<<<< HEAD
 res*
 icon*
 keystore*
-=======
 res/*
 icons*/*
->>>>>>> origin/version-1.0.5
-=======
-res/*
-icons*/*
->>>>>>> origin/version-1.0.5
 
 # OS generated files #
 ######################
@@ -28,12 +20,3 @@ icons*/*
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-
-*.png
-
-512.png
-
-1024.png
-
-1024 x 1024.jpg
