@@ -5,9 +5,14 @@ platforms/*
 plugins*
 shirkan.keystore
 info.txt
+<<<<<<< HEAD
 res*
 icon*
 keystore*
+=======
+res/*
+icons*/*
+>>>>>>> origin/version-1.0.5
 
 # OS generated files #
 ######################
